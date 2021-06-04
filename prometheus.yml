@@ -1,0 +1,9 @@
+- job_name: yottadb_Stats
+  honor_timestamps: true
+  scrape_interval: 15s
+  scrape_timeout: 10s
+  metrics_path: /
+  scheme: http
+  static_configs:
+  - targets:
+    - 192.168.240.21:8001
