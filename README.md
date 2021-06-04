@@ -41,6 +41,8 @@ Run the prometheus web scraper process with:
 This will ask you for the port to run the scraper on. To avoid this question, set the environmental variable YOTTA_PROM_PORT to the port required i.e.
 
     export YOTTA_PROM_PORT="8001"
+
+Additionally, a region can be selected by setting YOTTA_PROM_REG. Without this set, the region is set to DEFAULT.
     
 The scraper process can later be stopped by passing the parameter "stop". The status of the process can also be observed with "status"
     
