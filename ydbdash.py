@@ -15,13 +15,8 @@ class CustomCollector(object):
  def collect(self):
 
 
-    global job
-    global proc
-    global reg
-    global title
     job="Process"
 
-    proc=os.environ.get('YOTTA_PROM_PROC')
     if (os.environ.get('YOTTA_PROM_REG')==None):
        reg="DEFAULT"
     else:
