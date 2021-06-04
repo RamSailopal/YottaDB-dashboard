@@ -68,3 +68,5 @@ These are just 3 of the metrics that are scraped by Prometheus. Details of the f
 
 https://docs.yottadb.com/ProgrammersGuide/commands.html#zshow
 
+Both accumulated metric (designated with suffix _acc) over time for each stat as well as point in time statistics (designated with suffix _pit) will be shown.
+
