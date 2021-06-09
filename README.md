@@ -14,6 +14,10 @@ More details about gvstat can be found here:
 
 https://gitlab.com/YottaDB/Util/YDBGvstat/-/blob/master/gvstat.m
 
+The solution now also pulls in data attained from FREECNT
+
+https://docs.yottadb.com/ProgrammersGuide/utility.html#freecnt
+
 
 # Prerequisites
 
