@@ -76,6 +76,8 @@ https://docs.yottadb.com/ProgrammersGuide/commands.html#zshow
 
 Both accumulated metric (designated with suffix _acc) over time for each stat as well as point in time statistics (designated with suffix _pit) will be shown.
 
+FREECNT metrics will show as Perc_Free (Percentage Free space), Total_space (Total Space) and Free (Free Space) for the given region.
+
 
 # Log file analytics
 
