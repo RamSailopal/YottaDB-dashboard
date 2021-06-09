@@ -258,7 +258,7 @@ class CustomCollector(object):
              yield aab
            elif stats1[0] == "TTR":
              aac = GaugeMetricFamily("TTR" + "_" + met,"Number of Tp committed Transactions that were Read-only on this database", labels=[job])
-             aac.add_metric([title], stats1[1])
+             aac.add_metric([title], stats1[1]) 
              yield aac
            elif stats1[0] == "TTW":
              aad = GaugeMetricFamily("TTW" + "_" + met,"Number of Tp committed Transactions that were read-Write on this database", labels=[job])
@@ -272,6 +272,24 @@ class CustomCollector(object):
              aaf = GaugeMetricFamily("ZTR" + "_" + met,"Number of ZTRigger command operations", labels=[job])
              aaf.add_metric([title], stats1[1])
              yield aaf
+    cmd = "ydb <<< \"D ^%FREECNT\" | awk -v reg=\"" + reg + "\" '$0 ~ reg { gsub(\"[%)]\",\"\",$5);printf \"%s,%s,%s\",$2,$3,$5 }'"
+    process = subprocess.Popen(cmd,
+                              stdout=subprocess.PIPE,
+                              stderr=subprocess.PIPE,
+                              shell=True)
+    result = process.communicate()
+    stats=str(result[0]).split(",")
+    a = GaugeMetricFamily("Free","Free Space", labels=[job])
+    a.add_metric([title], int(stats[0]))
+    yield a
+    b = GaugeMetricFamily("Total_Space","Total Space", labels=[job])
+    b.add_metric([title], int(stats[1]))
+    yield b
+    c = GaugeMetricFamily("Perc_Free","Percentage Free Space", labels=[job])
+    c.add_metric([title], float(stats[2]))
+    yield c
+
+
 
 if __name__ == '__main__':
 
