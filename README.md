@@ -87,7 +87,7 @@ Further details about YottaDB syslog messaging can be found here - https://docs.
 
 It is assumed that instances of both Loki and Promtail are already running and that the Loki plugin is installed in Grafana.
 
-A dashboard in JSON format that additionally includes FREECNT and system logs from YottaDB is available in examples/Yottadb-graf-loki.yaml 
+A dashboard in JSON format that additionally includes FREECNT and system logs from YottaDB is available from examples/Yottadb-graf-loki.yaml 
 
 ![Alt text](yottadb-graf2.PNG?raw=true "YottaDB Dashboard")
 
