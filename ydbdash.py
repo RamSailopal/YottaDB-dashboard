@@ -288,6 +288,16 @@ class CustomCollector(object):
     c = GaugeMetricFamily("Perc_Free","Percentage Free Space", labels=[job])
     c.add_metric([title], float(stats[2]))
     yield c
+    cmd = "ps -ef | awk '/yottadb/ && $2 != PROCINFO[\"pid\"] { cnt++ } END { printf \"%s\",cnt }'"
+    process = subprocess.Popen(cmd,
+                              stdout=subprocess.PIPE,
+                              stderr=subprocess.PIPE,
+                              shell=True)
+    result = process.communicate()
+    a = GaugeMetricFamily("procs","Total YottaDB Processes", labels=[job])
+    a.add_metric([title], int(result[0])-1)
+    yield a
+
 
 
 
