@@ -85,3 +85,5 @@ Those wishing to view the log files created by YottaDB within Grafana can option
 
 It is assumed that instances of both Loki and Promtail are already running and that the Loki plugin is installed in Grafana. 
 
+![Alt text](yottadb-graf.PNG?raw=true "YottaDB Dashboard")
+
