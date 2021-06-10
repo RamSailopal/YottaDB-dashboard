@@ -1,0 +1,15 @@
+  - job_name: yottadb
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: yottadb
+          __path__: /var/log/messages
+    pipeline_stages:
+    - match:
+         selector: '{job="yottadb"}'
+         stages:
+         - regex:
+             expression: '^.*YDB-(?P<activity>[\w\.]+)'
+         - labels:
+             activity:
