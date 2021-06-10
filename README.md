@@ -74,9 +74,13 @@ These are just 3 of the metrics that are scraped by Prometheus. Details of the f
 
 https://docs.yottadb.com/ProgrammersGuide/commands.html#zshow
 
+Further details about adding further metrics are available in the Wiki
+
 Both accumulated metric (designated with suffix _acc) over time for each stat as well as point in time statistics (designated with suffix _pit) will be shown.
 
-FREECNT metrics will show as Perc_Free (Percentage Free space), Total_space (Total Space) and Free (Free Space) for the given region.
+FREECNT metrics will show as **Perc_Free** (Percentage Free space), **Total_space** (Total Space) and Free (Free Space) for the given region.
+
+A total YottaDB process count will show as **procs**
 
 
 # Log file analytics
