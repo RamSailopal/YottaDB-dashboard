@@ -81,9 +81,13 @@ FREECNT metrics will show as Perc_Free (Percentage Free space), Total_space (Tot
 
 # Log file analytics
 
-Those wishing to view the log files created by YottaDB within Grafana can optionally add the data from promtail.yaml to the existing Promtail configuration file. The log messages (prefixed with YDB-) can then be viewed with the Loki datasource and by selecting the Activity label.
+Those wishing to view the log files created by YottaDB within Grafana can optionally add the data from promtail.yaml to the existing Promtail configuration file. The log messages (prefixed with YDB-I, W, E and F ) can then be viewed with the Loki datasource and by selecting the Activity label.
 
-It is assumed that instances of both Loki and Promtail are already running and that the Loki plugin is installed in Grafana. 
+Further details about YottaDB syslog messaging can be found here - https://docs.yottadb.com/AdminOpsGuide/monitoring.html
+
+It is assumed that instances of both Loki and Promtail are already running and that the Loki plugin is installed in Grafana.
+
+A dashboard in JSON format that additionally includes FREECNT and system logs from YottaDB is available in examples/ 
 
 ![Alt text](yottadb-graf2.PNG?raw=true "YottaDB Dashboard")
 
