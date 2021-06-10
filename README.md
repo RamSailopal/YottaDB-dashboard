@@ -91,3 +91,8 @@ A dashboard in JSON format that additionally includes FREECNT and system logs fr
 
 ![Alt text](yottadb-graf2.PNG?raw=true "YottaDB Dashboard")
 
+
+# Stack setup
+
+A step by step guide on building the tech stack is found on the wiki - https://github.com/RamSailopal/yotta-dashboard/wiki
+
