@@ -1,0 +1,11 @@
+[Unit]
+Description=Loki Daemon
+After=syslog.target network.target loki.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/promtail -config.file /etc/promtail/promtail.yaml
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

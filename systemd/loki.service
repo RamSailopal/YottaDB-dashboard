@@ -1,0 +1,11 @@
+[Unit]
+Description=Loki Daemon
+After=syslog.target network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/loki -config.file /etc/loki/loki.yaml
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
