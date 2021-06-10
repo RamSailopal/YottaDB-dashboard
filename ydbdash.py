@@ -297,6 +297,27 @@ class CustomCollector(object):
     a = GaugeMetricFamily("procs","Total YottaDB Processes", labels=[job])
     a.add_metric([title], int(result[0])-1)
     yield a
+    cmd = "ydb <<< 'D ^%GD;*' | awk '/^Total/ { for (i=1;i<=NF;i++) { if (match($i,/[[:digit:]]+/)) { print $i } } }'"
+    process = subprocess.Popen(cmd,
+                              stdout=subprocess.PIPE,
+                              stderr=subprocess.PIPE,
+                              shell=True)
+    result = process.communicate()
+    a = GaugeMetricFamily("globs","Total YottaDB Globals", labels=[job])
+    a.add_metric([title], int(result[0]))
+    yield a
+    cmd = "(echo D ^%RD;sleep 1;echo \"*\";sleep 1;echo \"\";echo \"H\") | ydb | awk '/^Total/ { for (i=1;i<=NF;i++) { if (match($i,/[[:digit:]]+/)) { print $i } } }'"
+    process = subprocess.Popen(cmd,
+                              stdout=subprocess.PIPE,
+                              stderr=subprocess.PIPE,
+                              shell=True)
+    result = process.communicate()
+    a = GaugeMetricFamily("routs","Total YottaDB Routines", labels=[job])
+    a.add_metric([title], int(result[0]))
+    yield a
+
+
+
 
 
 
