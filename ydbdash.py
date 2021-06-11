@@ -5,7 +5,8 @@ import http.client
 import glob
 import os
 from prometheus_client.core import GaugeMetricFamily, REGISTRY, CounterMetricFamily
-from prometheus_client import start_http_server, Info
+from prometheus_client import start_http_server, Enum
+
 
 class CustomCollector(object):
  def __init__(self):
@@ -315,11 +316,20 @@ class CustomCollector(object):
     a = GaugeMetricFamily("routs","Total YottaDB Routines", labels=[job])
     a.add_metric([title], int(result[0]))
     yield a
-
-
-
-
-
+    if (os.environ.get('yotta_dir') != None):
+       cmd = "find " + os.environ.get('yotta_dir') + "/g -name \"*.mjl\" -exec stat --printf '%s\n' '{}' \; | awk '{ cnt+=$0 } END { print NR\":\"cnt }'"
+       process = subprocess.Popen(cmd,
+                              stdout=subprocess.PIPE,
+                              stderr=subprocess.PIPE,
+                              shell=True)
+       result = process.communicate()
+       result1=result[0].split(":")
+       a = GaugeMetricFamily("journsp","Total Journal file(s) size in bytes", labels=[job])
+       a.add_metric([title], int(result1[1]))
+       yield a
+       b = GaugeMetricFamily("journnum","Total number of Journal files", labels=[job])
+       b.add_metric([title], int(result1[0]))
+       yield b
 
 
 if __name__ == '__main__':
@@ -328,4 +338,5 @@ if __name__ == '__main__':
     REGISTRY.register(CustomCollector())
     while True:
         time.sleep(10)
+
 
