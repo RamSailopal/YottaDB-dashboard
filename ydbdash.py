@@ -340,6 +340,17 @@ class CustomCollector(object):
        a = GaugeMetricFamily("sysspace","File system space", labels=[job])
        a.add_metric([title], int(result1))
        yield a
+       cmd = "find " + os.environ.get('yotta_dir') + "/g -name \"*.dat\" -exec stat --printf '%s\n' '{}' \;"
+       process = subprocess.Popen(cmd,
+                              stdout=subprocess.PIPE,
+                              stderr=subprocess.PIPE,
+                              shell=True)
+       result = process.communicate()
+       a = GaugeMetricFamily("dbsize","Database Size", labels=[job])
+       a.add_metric([title], int(result[0]))
+       yield a
+
+
 
 
 if __name__ == '__main__':
