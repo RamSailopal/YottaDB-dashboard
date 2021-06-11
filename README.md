@@ -14,9 +14,31 @@ More details about gvstat can be found here:
 
 https://gitlab.com/YottaDB/Util/YDBGvstat/-/blob/master/gvstat.m
 
-The solution now also pulls in data attained from FREECNT
 
-https://docs.yottadb.com/ProgrammersGuide/utility.html#freecnt
+# Metrics Available
+
+The built in YottaDB metrics listed here https://docs.yottadb.com/ProgrammersGuide/commands.html#zshow
+
+**Free** - Total Free space
+
+**Total_Space** - Total space
+
+**Perc_Free** - Percentage Free Space
+
+Further details - https://docs.yottadb.com/ProgrammersGuide/utility.html#freecnt
+
+**procs** - Total number of Yottadb processes
+
+**globs** - Total number of globals
+
+**routs** - Total number of routines
+
+**journsp** - Total space taken by journal files (requires environmental variable yotta_dir to be set i.e. export yotta_dir="/root/.yottadb/V6.3-008_x86_64")
+
+**journnum** - Total number of journal files (requires environmental variable yotta_dir to be set i.e. export yotta_dir="/root/.yottadb/V6.3-008_x86_64")
+
+**sysspace** - Percentage use of the file system used by Yottadb
+
 
 
 # Prerequisites
@@ -77,10 +99,6 @@ https://docs.yottadb.com/ProgrammersGuide/commands.html#zshow
 Further details about adding further metrics are available in the Wiki
 
 Both accumulated metric (designated with suffix _acc) over time for each stat as well as point in time statistics (designated with suffix _pit) will be shown.
-
-FREECNT metrics will show as **Perc_Free** (Percentage Free space), **Total_space** (Total Space) and Free (Free Space) for the given region.
-
-A total YottaDB process count will show as **procs**
 
 
 # Log file analytics
