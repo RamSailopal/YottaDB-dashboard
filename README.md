@@ -39,7 +39,7 @@ Further details - https://docs.yottadb.com/ProgrammersGuide/utility.html#freecnt
 
 **sysspace** - Percentage use of the file system used by Yottadb
 
-**dbspace** - Database size (in bytes)
+**dbspace** - Database size in bytes (requires environmental variable yotta_dir to be set i.e. export yotta_dir="/root/.yottadb/V6.3-008_x86_64")
 
 
 
