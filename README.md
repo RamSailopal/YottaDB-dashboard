@@ -20,16 +20,23 @@ https://gitlab.com/YottaDB/Util/YDBGvstat/-/blob/master/gvstat.m
 The built in YottaDB metrics listed here https://docs.yottadb.com/ProgrammersGuide/commands.html#zshow
 
 **Free** - Total Free space
+
 **Total_Space** - Total space
+
 **Perc_Free** - Percentage Free Space
 
 Further details - https://docs.yottadb.com/ProgrammersGuide/utility.html#freecnt
 
 **procs** - Total number of Yottadb processes
+
 **globs** - Total number of globals
+
 **routs** - Total number of routines
+
 **journsp** - Total space taken by journal files (requires environmental variable yotta_dir to be set i.e. "/root/.yottadb/V6.3-008_x86_64")
+
 **journnum** - Total number of journal files (requires environmental variable yotta_dir to be set i.e. "/root/.yottadb/V6.3-008_x86_64")
+
 **sysspace** - Percentage use of the file system used by Yottadb
 
 
