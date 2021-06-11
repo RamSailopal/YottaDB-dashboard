@@ -41,7 +41,7 @@ Further details - https://docs.yottadb.com/ProgrammersGuide/utility.html#freecnt
 
 **dbspace** - Database size in bytes (requires environmental variable yotta_dir to be set i.e. export yotta_dir="/root/.yottadb/V6.3-008_x86_64")
 
-**netproc"" - Number of YottaDB network processes
+**netproc** - Number of YottaDB network processes
 
 
 
