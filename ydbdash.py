@@ -4,7 +4,7 @@ import time
 import http.client
 import glob
 import os
-from prometheus_client.core import GaugeMetricFamily, REGISTRY, CounterMetricFamily
+from prometheus_client.core import GaugeMetricFamily, StateSetMetricFamily, REGISTRY, CounterMetricFamily
 from prometheus_client import start_http_server, Enum
 
 
@@ -349,7 +349,15 @@ class CustomCollector(object):
        a = GaugeMetricFamily("dbsize","Database Size", labels=[job])
        a.add_metric([title], int(result[0]))
        yield a
-
+       cmd = "ss -lnp | grep yotta | wc -l"
+       process = subprocess.Popen(cmd,
+                              stdout=subprocess.PIPE,
+                              stderr=subprocess.PIPE,
+                              shell=True)
+       result = process.communicate()
+       a = GaugeMetricFamily("netproc","Network Processes", labels=[job])
+       a.add_metric([title], int(result[0]))
+       yield a
 
 
 
