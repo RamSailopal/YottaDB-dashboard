@@ -330,6 +330,16 @@ class CustomCollector(object):
        b = GaugeMetricFamily("journnum","Total number of Journal files", labels=[job])
        b.add_metric([title], int(result1[0]))
        yield b
+       cmd = "df -h --output=pcent \"" + os.environ.get('yotta_dir') + "\" | tail -1"
+       process = subprocess.Popen(cmd,
+                              stdout=subprocess.PIPE,
+                              stderr=subprocess.PIPE,
+                              shell=True)
+       result = process.communicate()
+       result1=result[0].replace("%","")
+       a = GaugeMetricFamily("sysspace","File system space", labels=[job])
+       a.add_metric([title], int(result1))
+       yield a
 
 
 if __name__ == '__main__':
