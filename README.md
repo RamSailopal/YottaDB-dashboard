@@ -119,6 +119,10 @@ A dashboard in JSON format that additionally includes FREECNT and system logs fr
 
 Additional integration with M-Gateway (MGSI) logs is also now available. Please see the Wiki for more details - https://github.com/RamSailopal/yotta-dashboard/wiki
 
+The solution runs an M daemon routine that periodically pulls additions to the %zmgsi("logs" global entries and appends them to /var/log/mgsi.log tp be picked up by Promtail.
+
+Further details about the M Gateway service integration gateway are avilable here - https://github.com/chrisemunt/mgsi
+
 
 # Stack setup
 
