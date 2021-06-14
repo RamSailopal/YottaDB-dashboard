@@ -121,7 +121,7 @@ Additional integration with M-Gateway (MGSI) logs is also now available. Please 
 
 The solution runs an M daemon routine that periodically pulls additions to the %zmgsi("logs" global entries and appends them to /var/log/mgsi.log. The log file is then processed by Promtail.
 
-Further details about the M Gateway service integration gateway are avilable here - https://github.com/chrisemunt/mgsi
+Further details about the M Gateway service integration gateway are available here - https://github.com/chrisemunt/mgsi
 
 
 # Stack setup
