@@ -117,6 +117,8 @@ A dashboard in JSON format that additionally includes FREECNT and system logs fr
 
 ![Alt text](yottadb-graf2.PNG?raw=true "YottaDB Dashboard")
 
+Additional integration with M-Gateway (MGSI) logs is also now available.
+
 
 # Stack setup
 
