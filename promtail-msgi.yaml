@@ -1,0 +1,8 @@
+  - job_name: mgsi
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: mgsi
+          __path__: /var/log/mgsi.log
+
