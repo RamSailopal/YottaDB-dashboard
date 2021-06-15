@@ -1,4 +1,4 @@
-START
+START(FIL)
  S FIL="/var/log/mgsi.log"
  F  D
  . O FIL:(append)
@@ -8,7 +8,7 @@ START
  .. S ^%zmgsitrk(1)=STRT
  .. S CNT=""
  .. F  S CNT=$O(^%zmgsi("log",STRT,CNT)) Q:CNT=""  D
- ...U FIL W !,^%zmgsi("log",STRT,CNT)
+ ...U FIL W !,$G(^%zmgsi("log",STRT,CNT))
  . C FIL
  . H 30
  QUIT
