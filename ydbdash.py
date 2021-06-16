@@ -279,7 +279,8 @@ class CustomCollector(object):
                               stderr=subprocess.PIPE,
                               shell=True)
     result = process.communicate()
-    stats=str(result[0]).split(",")
+    stats=result[0].decode('ascii')
+    stats=str(stats).split(",")
     a = GaugeMetricFamily("Free","Free Space", labels=[job])
     a.add_metric([title], int(stats[0]))
     yield a
