@@ -1,4 +1,4 @@
-# yotta-dashboard
+# YottaDB-dashboard
 
 
 # Background
