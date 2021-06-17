@@ -3,7 +3,8 @@ START(FIL)
  F  D
  . O FIL:(append)
  . S STRT=$G(^%zmgsitrk(1))
- . I '$D(^%zmgsi("log",STRT)) S STRT=""
+ . I STRT="" S STRT=""
+ . E  I '$D(^%zmgsi("log",STRT)) S STRT=""
  . F  S STRT=$O(^%zmgsi("log",STRT)) Q:STRT=""  D
  .. S ^%zmgsitrk(1)=STRT
  .. S CNT=""
