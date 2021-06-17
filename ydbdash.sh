@@ -21,7 +21,7 @@ then
 			exit
 		fi
 	fi
-	./ydbdash.py &
+	nohup ./ydbdash.py </dev/null >/dev/null 2>&1 &
 	echo $! > ydbdash.pid
 
 elif [[ "$1" == "stop" ]]
