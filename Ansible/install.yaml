@@ -1,0 +1,131 @@
+ - hosts: testmainframe
+   remote_user: root
+   roles:
+    -
+      name: "Install Yottadb"
+      role: "ramsailopal.yottadb"
+    -
+      name: "Install Yottadb M-Gateway service"
+      role: "ramsailopal.yottadb_nodejs"
+      when: mgateway == "yes"
+    -
+      name: "Install Yottadb"
+      role: "ramsailopal.yottadb_dashboard_role"
+    -
+      name: "Install Promtail (without M-Gateway Service)"
+      role:  "patrickjahns.promtail"
+      vars:
+        promtail_system_user: "root"
+        promtail_system_group: "root"
+        __promtail_checksum: "40d8d414b44baa78c5010cb7575d74eea035b6b00adb78e9676a045d6730a16f"
+        promtail_dist_url: "https://github.com/grafana/loki/releases/download/v2.2.1/promtail-linux-amd64.zip"
+        promtail_config_scrape_configs:
+          - job_name: yottadb
+            static_configs:
+             - targets:
+                 - localhost
+               labels:
+                 job: yottadb
+                 __path__: /var/log/messages
+            pipeline_stages:
+            - match:
+                selector: '{job="yottadb"}'
+                stages:
+                - regex:
+                    expression: '^.*YDB-(?P<activity>[\w\.]+)'
+                - labels:
+                    activity:
+      when: mgateway == "no"
+
+    -
+      name: "Install Promtail (With M-Gateway service)"
+      role:  "patrickjahns.promtail"
+      vars:
+        promtail_system_user: "root"
+        promtail_system_group: "root"
+        __promtail_checksum: "40d8d414b44baa78c5010cb7575d74eea035b6b00adb78e9676a045d6730a16f"
+        promtail_dist_url: "https://github.com/grafana/loki/releases/download/v2.2.1/promtail-linux-amd64.zip"
+        promtail_config_scrape_configs:
+          - job_name: yottadb
+            static_configs:
+             - targets:
+                 - localhost
+               labels:
+                 job: yottadb
+                 __path__: /var/log/messages
+            pipeline_stages:
+            - match:
+                selector: '{job="yottadb"}'
+                stages:
+                - regex:
+                    expression: '^.*YDB-(?P<activity>[\w\.]+)'
+                - labels:
+                    activity:
+          - job_name: mgsi
+            static_configs:
+             - targets:
+                 - localhost
+               labels:
+                 job: mgsi
+                 __path__: /var/log/mgsi.log
+
+      when: mgateway == "yes"
+
+        
+    -
+      name: "Install Prometheus"
+      role:  "cloudalchemy.prometheus"
+      vars:
+        prometheus_scrape_configs:
+         - job_name: "prometheus" 
+           metrics_path: "/metrics"
+           static_configs:
+            - targets:
+              - "localhost:{{ dashport }}"
+    -
+      name: "Install Grafana"
+      role:  "cloudalchemy.grafana"
+      vars:
+        grafana_security: { admin_user: admin, admin_password: "{{ grafpass }}" }
+
+        
+   collections:
+    - community.grafana
+
+   tasks:
+     - name: Create Loki datasource
+       community.grafana.grafana_datasource:
+         name: "datasource-loki"
+         grafana_url: "http://{{ grafhost }}:3000"
+         grafana_user: "admin"
+         grafana_password: "{{ grafpass }}"
+         ds_type: "loki"
+         ds_url: "http://localhost:3100"
+
+     - name: Create Prometheus datasource
+       community.grafana.grafana_datasource:
+         name: "datasource-prometheus"
+         grafana_url: "http://{{ grafhost }}:3000"
+         grafana_user: "admin"
+         grafana_password: "{{ grafpass }}"
+         ds_type: "prometheus"
+         ds_url: "http://localhost:9090"
+         is_default: "yes"
+
+     - name: Copy dashboard yaml to the server
+       copy:
+         src: "{{ repodir }}/examples/Yottadb-graf-loki.yaml"
+         dest: "/tmp/Yottadb-graf-loki.yaml"
+
+     - name: "Import Grafana dashboard Yottadb"
+       community.grafana.grafana_dashboard:
+         grafana_url: "http://{{ grafhost }}:3000"
+         url_username: "admin"
+         url_password: "{{ grafpass }}"
+         state: "present"
+         commit_message: "Updated by ansible"
+         overwrite: "yes"
+         path: "/tmp/Yottadb-graf-loki.yaml"
+
+
+
