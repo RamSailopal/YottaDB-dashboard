@@ -134,11 +134,17 @@ Process for installation with ansible:
 
 Set up a vanilla Linux server and install ansible and ansible-galaxy
 
+
 Run:
 
     ansible-galaxy install ramsailopal.yottadb ramsailopal.yottadb_nodejs ramsailopal.yottadb_dashboard_role patrickjahns.promtail cloudalchemy.grafana cloudalchemy.prometheus
     ansible-galaxy collection install community.grafana
-     
+    
+Add the following entries to **/etc/ansible/hosts**
+
+    [localhost]
+    127.0.0.1
+
 Then run the playbook:
 
      cd Ansible
@@ -154,5 +160,5 @@ Where:
 
 **repodir** is the LOCAL YottaDB-dashboard directory
 
-**mageway** is whether you want metrics for the M-Gateway service     
+**mgateway** is whether you want metrics for the M-Gateway service     
 
