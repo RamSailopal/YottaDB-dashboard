@@ -128,3 +128,30 @@ Further details about the M Gateway service integration gateway are available he
 
 A step by step guide on building the tech stack is found on the wiki - https://github.com/RamSailopal/yotta-dashboard/wiki
 
+An Ansible playbook is also available in the Ansible folder.
+
+Process for installation with ansible:
+
+Set up a vanilla Linux server and install ansible and ansible-galaxy
+
+Run:
+     ansible-galaxy install ramsailopal.yottadb ramsailopal.yottadb_nodejs ramsailopal.yottadb_dashboard_role patrickjahns.promtail cloudalchemy.grafana cloudalchemy.prometheus
+     ansible-galaxy collection install community.grafana
+     
+Then run the playbook:
+
+     cd Ansible
+     ansible-playbook -e grafhost="192.168.240.50" -e grafpass="test" -e dashport="8001" -e repodir="/usr/local/YottaDB-dashboard" -e mgateway="yes" install.yaml
+     
+Where:
+
+**grafhost** is the IP address to access the Grafana GUI
+
+**grafpass** is the admin account (username admin) password
+
+**dashport** is the port on which the YottaDB metric service is running
+
+**repodir** is the LOCAL YottaDB-dashboard directory
+
+**mageway** is whether you want metrics for the M-Gateway service     
+
