@@ -128,15 +128,16 @@ Further details about the M Gateway service integration gateway are available he
 
 A step by step guide on building the tech stack is found on the wiki - https://github.com/RamSailopal/yotta-dashboard/wiki
 
-An Ansible playbook is also available in the Ansible folder.
+**An Ansible playbook is also available in the Ansible folder**
 
 Process for installation with ansible:
 
 Set up a vanilla Linux server and install ansible and ansible-galaxy
 
 Run:
-     ansible-galaxy install ramsailopal.yottadb ramsailopal.yottadb_nodejs ramsailopal.yottadb_dashboard_role patrickjahns.promtail cloudalchemy.grafana cloudalchemy.prometheus
-     ansible-galaxy collection install community.grafana
+
+    ansible-galaxy install ramsailopal.yottadb ramsailopal.yottadb_nodejs ramsailopal.yottadb_dashboard_role patrickjahns.promtail cloudalchemy.grafana cloudalchemy.prometheus
+    ansible-galaxy collection install community.grafana
      
 Then run the playbook:
 
