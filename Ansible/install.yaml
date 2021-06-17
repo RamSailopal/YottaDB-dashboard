@@ -1,4 +1,4 @@
- - hosts: testmainframe
+ - hosts: localhost
    remote_user: root
    roles:
     -
