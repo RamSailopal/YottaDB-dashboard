@@ -132,8 +132,7 @@ A step by step guide on building the tech stack is found on the wiki - https://g
 
 Process for installation with ansible:
 
-Set up a vanilla Linux server and install ansible and ansible-galaxy
-
+Set up a vanilla Linux server and install Ansible
 
 Run:
 
