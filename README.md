@@ -173,11 +173,9 @@ Steps:
 3. Create a new directory in the Vagrant installation directory (**C:\HashiCorp** on Windows **/opt/vagrant** on Linux)
 4. Create a file in the new directory called **Vagrantfile** and copy and paste the contents from https://raw.githubusercontent.com/RamSailopal/YottaDB-dashboard/main/Vagrant/Vagrantfile
 5. Issue the command **vagrant up** from the Linux command line/Windows command prompt/Powershell prompt from within this directory
-6. When Vagrant has finished provisioning the stack, navigate to http://127.0.0.1:3000 and then login with:
+6. When Vagrant has finished provisioning the stack, navigate to http://127.0.0.1:3000/d/Pga70YCMk/yottadb?orgId=1&from=now-15m&to=now&refresh=5s and then login with:
 
    **username: admin**
    
    **password: test**
    
-7. Navigate to dashboards and select Yottadb
-
