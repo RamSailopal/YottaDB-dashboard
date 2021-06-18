@@ -147,7 +147,7 @@ Add the following entries to **/etc/ansible/hosts**
 Then run the playbook:
 
      cd Ansible
-     ansible-playbook -e grafhost="192.168.240.50" -e grafpass="test" -e dashport="8001" -e repodir="/usr/local/YottaDB-dashboard" -e mgateway="yes" install.yaml
+     ansible-playbook -e grafhost="192.168.240.50" -e grafpass="test" -e dashport="8001" -e repodir="/usr/local/YottaDB-dashboard" -e mgateway="yes" -e force="yes" install.yaml
      
 Where:
 
@@ -159,7 +159,9 @@ Where:
 
 **repodir** is the LOCAL YottaDB-dashboard directory
 
-**mgateway** is whether you want metrics for the M-Gateway service     
+**mgateway** is whether you want metrics for the M-Gateway service
+
+**force** is whether to force the install of YottaDB on older versions of Linux
 
 
 # Quick Setup of full stack with Vagrant integrated with Ansible
