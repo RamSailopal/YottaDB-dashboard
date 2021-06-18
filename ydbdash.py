@@ -324,7 +324,8 @@ class CustomCollector(object):
                               stderr=subprocess.PIPE,
                               shell=True)
        result = process.communicate()
-       result1=result[0].split(":")
+       result1=result[0].decode('ascii') 
+       result1=result1.split(":")
        a = GaugeMetricFamily("journsp","Total Journal file(s) size in bytes", labels=[job])
        a.add_metric([title], int(result1[1]))
        yield a
@@ -337,7 +338,8 @@ class CustomCollector(object):
                               stderr=subprocess.PIPE,
                               shell=True)
        result = process.communicate()
-       result1=result[0].replace("%","")
+       result1=result[0].decode('ascii')
+       result1=result1.replace("%","")
        a = GaugeMetricFamily("sysspace","File system space", labels=[job])
        a.add_metric([title], int(result1))
        yield a
