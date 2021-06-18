@@ -60,8 +60,8 @@ Ensure that the ydb executable is executable via the system path and so ensure t
 
 # Installation and Operation
 
-    git clone https://github.com/RamSailopal/yotta-dashboard.git
-    cd yotta-dashboard
+    git clone https://github.com/RamSailopal/YottaDB-dashboard.git
+    cd YottaDB-dashboard
     ./install.sh "<path to yottadb routines directory>"
     
 Run the prometheus web scraper process with:
