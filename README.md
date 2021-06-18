@@ -162,3 +162,14 @@ Where:
 
 **mgateway** is whether you want metrics for the M-Gateway service     
 
+
+# Quick Setup of full stack with Vagrant integrated with Ansible
+
+Steps:
+
+1. Install Oracle Virtual Box - https://www.virtualbox.org/wiki/Downloads
+2. Install Hashicorp Vagrant - https://www.vagrantup.com/downloads
+3. Create a new directory in the Vagrant installation directory
+4. Create a file called **Vagrantfile** and copy and paste the contents from https://raw.githubusercontent.com/RamSailopal/YottaDB-dashboard/main/Vagrant/Vagrantfile
+5. Issue the command **vagrant up**
+
