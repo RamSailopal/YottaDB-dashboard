@@ -147,7 +147,7 @@ Add the following entries to **/etc/ansible/hosts**
 Then run the playbook:
 
      cd Ansible
-     ansible-playbook -e grafhost="192.168.240.50" -e grafpass="test" -e dashport="8001" -e repodir="/usr/local/YottaDB-dashboard" -e mgateway="yes" -e force="yes" install.yaml
+     ansible-playbook -e grafhost="192.168.240.50" -e grafpass="test" -e dashport="8001" -e repodir="/usr/local/YottaDB-dashboard" -e mgateway="yes" -e force="Yes" install.yaml
      
 Where:
 
