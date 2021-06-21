@@ -361,6 +361,16 @@ class CustomCollector(object):
        a = GaugeMetricFamily("netproc","Network Processes", labels=[job])
        a.add_metric([title], int(result[0]))
        yield a
+       cmd = "while read proc;do cat \"/proc/$proc/stat\";done <<< \"$(ps -eo pid,comm | grep yottadb | cut -d ' ' -f 1)\" | awk '{ vtot+=$23 } END { print vtot }'"
+       process = subprocess.Popen(cmd,
+                              stdout=subprocess.PIPE,
+                              stderr=subprocess.PIPE,
+                              shell=True)
+       result = process.communicate()
+       a = GaugeMetricFamily("vmem","Total Virtual Memory in bytes", labels=[job])
+       a.add_metric([title], int(result[0]))
+       yield a
+
 
 
 
