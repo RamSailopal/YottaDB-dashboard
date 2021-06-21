@@ -60,8 +60,8 @@ Ensure that the ydb executable is executable via the system path and so ensure t
 
 # Installation and Operation
 
-    git clone https://github.com/RamSailopal/yotta-dashboard.git
-    cd yotta-dashboard
+    git clone https://github.com/RamSailopal/YottaDB-dashboard.git
+    cd YottaDB-dashboard
     ./install.sh "<path to yottadb routines directory>"
     
 Run the prometheus web scraper process with:
@@ -132,8 +132,7 @@ A step by step guide on building the tech stack is found on the wiki - https://g
 
 Process for installation with ansible:
 
-Set up a vanilla Linux server and install ansible and ansible-galaxy
-
+Set up a vanilla Linux server and install Ansible
 
 Run:
 
@@ -148,7 +147,7 @@ Add the following entries to **/etc/ansible/hosts**
 Then run the playbook:
 
      cd Ansible
-     ansible-playbook -e grafhost="192.168.240.50" -e grafpass="test" -e dashport="8001" -e repodir="/usr/local/YottaDB-dashboard" -e mgateway="yes" install.yaml
+     ansible-playbook -e grafhost="192.168.240.50" -e grafpass="test" -e dashport="8001" -e repodir="/usr/local/YottaDB-dashboard" -e mgateway="yes" -e force="Yes" install.yaml
      
 Where:
 
@@ -160,5 +159,23 @@ Where:
 
 **repodir** is the LOCAL YottaDB-dashboard directory
 
-**mgateway** is whether you want metrics for the M-Gateway service     
+**mgateway** is whether you want metrics for the M-Gateway service
 
+**force** is whether to force the install of YottaDB on older versions of Linux
+
+
+# Quick Setup of full stack with Vagrant integrated with Ansible
+
+Steps:
+
+1. Install Oracle Virtual Box - https://www.virtualbox.org/wiki/Downloads
+2. Install Hashicorp Vagrant - https://www.vagrantup.com/downloads
+3. Create a new directory in the Vagrant installation directory (**C:\HashiCorp** on Windows **/opt/vagrant** on Linux)
+4. Create a file in the new directory called **Vagrantfile** and copy and paste the contents from https://raw.githubusercontent.com/RamSailopal/YottaDB-dashboard/main/Vagrant/Vagrantfile
+5. Issue the command **vagrant up** from the Linux command line/Windows command prompt/Powershell prompt from within this directory
+6. When Vagrant has finished provisioning the stack, navigate to http://127.0.0.1:3000/d/Pga70YCMk/yottadb?orgId=1&from=now-15m&to=now&refresh=5s and then login with:
+
+   **username: admin**
+   
+   **password: test**
+   
