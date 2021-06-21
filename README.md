@@ -43,6 +43,8 @@ Further details - https://docs.yottadb.com/ProgrammersGuide/utility.html#freecnt
 
 **netproc** - Number of YottaDB network processes
 
+**vmem** - Total amount of virtual memory consumed by all Yottadb processes in bytes.
+
 
 
 # Prerequisites
