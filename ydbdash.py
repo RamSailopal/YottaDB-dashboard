@@ -318,7 +318,7 @@ class CustomCollector(object):
     a.add_metric([title], int(result[0]))
     yield a
     if (os.environ.get('yotta_dir') != None):
-       cmd = "find " + os.environ.get('yotta_dir') + "/g -name \"*.mjl\" -exec stat --printf '%s\n' '{}' \; | awk '{ cnt+=$0 } END { print NR\":\"cnt }'"
+       cmd = "find " + os.environ.get('yotta_dir') + "/g -name \"*.mjl*\" -exec stat --printf '%s\n' '{}' \; | awk '{ cnt+=$0 } END { print NR\":\"cnt }'"
        process = subprocess.Popen(cmd,
                               stdout=subprocess.PIPE,
                               stderr=subprocess.PIPE,
