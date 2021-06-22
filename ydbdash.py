@@ -370,6 +370,23 @@ class CustomCollector(object):
        a = GaugeMetricFamily("vmem","Total Virtual Memory in bytes", labels=[job])
        a.add_metric([title], int(result[0]))
        yield a
+       cmd = "uptime | awk -F [,:] '{ gsub(\" \",\"\",$0);print $(NF-2)\",\"$(NF-1)\",\"$NF }'"
+       process = subprocess.Popen(cmd,
+                              stdout=subprocess.PIPE,
+                              stderr=subprocess.PIPE,
+                              shell=True)
+       result = process.communicate()
+       lavg=result[0].split(",")
+       a = GaugeMetricFamily("lavg1","Load Average 1 minute", labels=[job])
+       a.add_metric([title], float(lavg[0]))
+       yield a
+       b = GaugeMetricFamily("lavg5","Load Average 5 minutes", labels=[job])
+       b.add_metric([title], float(lavg[1]))
+       yield b
+       c = GaugeMetricFamily("lavg15","Load Average 15 minutes", labels=[job])
+       c.add_metric([title], float(lavg[2]))
+       yield c
+
 
 
 
