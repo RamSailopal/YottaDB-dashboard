@@ -370,7 +370,7 @@ class CustomCollector(object):
        a = GaugeMetricFamily("vmem","Total Virtual Memory in bytes", labels=[job])
        a.add_metric([title], int(result[0]))
        yield a
-       cmd = "uptime | awk -F [,:] '{ gsub(\" \",\"\",$0);print $(NF-2)\",\"$(NF-1)\",\"$NF }'"
+       cmd = "awk '{ print $1\",\"$2\",\"$3 }' /proc/loadavg"
        process = subprocess.Popen(cmd,
                               stdout=subprocess.PIPE,
                               stderr=subprocess.PIPE,
