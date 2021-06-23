@@ -45,6 +45,14 @@ Further details - https://docs.yottadb.com/ProgrammersGuide/utility.html#freecnt
 
 **vmem** - Total amount of virtual memory consumed by all Yottadb processes in bytes.
 
+**lavg1** - Load average over 1 minute
+
+**lavg5** - Load average over 5 minutes
+
+**lavg15** - Load average over 15 minutes
+
+
+
 
 
 # Prerequisites
