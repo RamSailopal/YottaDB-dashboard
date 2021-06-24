@@ -51,7 +51,7 @@ Further details - https://docs.yottadb.com/ProgrammersGuide/utility.html#freecnt
 
 **lavg15** - Load average over 15 minutes
 
-**dskutil_<disk>** - % Disk utilisation metrics per second for each disk on the system
+**dskutil_...** - % Disk utilisation metrics per second for each disk on the system
 
 
 
