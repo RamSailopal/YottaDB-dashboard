@@ -386,7 +386,7 @@ class CustomCollector(object):
        c = GaugeMetricFamily("lavg15","Load Average 15 minutes", labels=[job])
        c.add_metric([title], float(lavg[2]))
        yield c
-       cmd="while read dsk;do awk -v dsk=\"$dsk\" 'NR==FNR { tim=$1;next } $3 == dsk { printf \"%s:%s\",dsk,($13/tim)/1000 }' /proc/uptime /proc/diskstats;done <<< $(lsblk -l | awk '$6 == \"disk\" && $1 !~ /fd/ && $1 !~ /cdrom/ { print $1 }')"
+       cmd="while read dsk;do awk -v dsk=\"$dsk\" 'NR==FNR { tim=$1;next } $3 == dsk { printf \"%s:%s\",dsk,($13/tim)/100 }' /proc/uptime /proc/diskstats;done <<< $(lsblk -l | awk '$6 == \"disk\" && $1 !~ /fd/ && $1 !~ /cdrom/ { print $1 }')"
        process = subprocess.Popen(cmd,
                               stdout=subprocess.PIPE,
                               stderr=subprocess.PIPE,
