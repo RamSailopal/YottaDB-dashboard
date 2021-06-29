@@ -398,6 +398,18 @@ class CustomCollector(object):
              a = GaugeMetricFamily("dskutil_" + resdat[0],"Disk utilisation - " + resdat[0], labels=[job])
              a.add_metric([title], float(resdat[1]))
              yield a
+       if (os.environ.get('yotta_instdir')!=None and os.environ.get('ydb_gbldir')!=None and os.environ.get('ydb_dir')!=None and os.environ.get('ydb_rel')!=None):
+          cmd=os.environ.get('yotta_instdir') + "/lke show -all 2>&1 | awk 'BEGIN { cnt=0 } /Owned by PID/ { cnt++ } END { printf \"%s\",cnt }'"
+          process = subprocess.Popen(cmd,
+                                     stdout=subprocess.PIPE,
+                                     stderr=subprocess.PIPE,
+                                     shell=True)
+          result = process.communicate()
+          print(cmd)
+          a = GaugeMetricFamily("locks","Number of Global Locks", labels=[job])
+          a.add_metric([title], int(result[0]))
+          yield a
+
           
 
 
