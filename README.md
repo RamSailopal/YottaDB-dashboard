@@ -53,7 +53,7 @@ Further details - https://docs.yottadb.com/ProgrammersGuide/utility.html#freecnt
 
 **dskutil_...** - % Disk utilisation metrics per second for each disk on the system
 
-**locks** - Number of global locks active - Needs environmental variable yotta_instdir set to the installation directory i.e. /usr/local/yottadb, ydb_gbldir set the path of the gld file i.e. /root/.yottadb/r1.30_x86_64/g/yottadb, ydb_dir set to  root directory of globals directory i.e. /root/.yottadb and finally ydb_rel set to  version number i.e. r1.30_x86_64
+**locks** - Number of global locks active - Needs environmental variable _yotta_instdir_ set to the installation directory i.e. /usr/local/yottadb, ydb_gbldir set the path of the gld file i.e. /root/.yottadb/r1.30_x86_64/g/yottadb, ydb_dir set to  root directory of globals directory i.e. /root/.yottadb and finally ydb_rel set to  version number i.e. r1.30_x86_64
 
 
 
