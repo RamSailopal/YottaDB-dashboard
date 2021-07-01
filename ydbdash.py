@@ -352,63 +352,62 @@ class CustomCollector(object):
        a = GaugeMetricFamily("dbsize","Database Size", labels=[job])
        a.add_metric([title], int(result[0]))
        yield a
-       cmd = "ss -lnp | grep yotta | wc -l"
-       process = subprocess.Popen(cmd,
+    cmd = "ss -lnp | grep yotta | wc -l"
+    process = subprocess.Popen(cmd,
                               stdout=subprocess.PIPE,
                               stderr=subprocess.PIPE,
                               shell=True)
-       result = process.communicate()
-       a = GaugeMetricFamily("netproc","Network Processes", labels=[job])
-       a.add_metric([title], int(result[0]))
-       yield a
-       cmd = "while read proc;do cat \"/proc/$proc/stat\";done <<< \"$(ps -eo pid,comm | grep yottadb | cut -d ' ' -f 1)\" | awk '{ vtot+=$23 } END { print vtot }'"
-       process = subprocess.Popen(cmd,
+    result = process.communicate()
+    a = GaugeMetricFamily("netproc","Network Processes", labels=[job])
+    a.add_metric([title], int(result[0]))
+    yield a
+    cmd = "while read proc;do cat \"/proc/$proc/stat\";done <<< \"$(ps -eo pid,comm | grep yottadb | cut -d ' ' -f 1)\" | awk '{ vtot+=$23 } END { print vtot }'"
+    process = subprocess.Popen(cmd,
                               stdout=subprocess.PIPE,
                               stderr=subprocess.PIPE,
                               shell=True)
-       result = process.communicate()
-       a = GaugeMetricFamily("vmem","Total Virtual Memory in bytes", labels=[job])
-       a.add_metric([title], int(result[0]))
-       yield a
-       cmd = "awk '{ print $1\",\"$2\",\"$3 }' /proc/loadavg"
-       process = subprocess.Popen(cmd,
+    result = process.communicate()
+    a = GaugeMetricFamily("vmem","Total Virtual Memory in bytes", labels=[job])
+    a.add_metric([title], int(result[0]))
+    yield a
+    cmd = "awk '{ print $1\",\"$2\",\"$3 }' /proc/loadavg"
+    process = subprocess.Popen(cmd,
                               stdout=subprocess.PIPE,
                               stderr=subprocess.PIPE,
                               shell=True)
-       result = process.communicate()
-       lavg=result[0].split(",")
-       a = GaugeMetricFamily("lavg1","Load Average 1 minute", labels=[job])
-       a.add_metric([title], float(lavg[0]))
-       yield a
-       b = GaugeMetricFamily("lavg5","Load Average 5 minutes", labels=[job])
-       b.add_metric([title], float(lavg[1]))
-       yield b
-       c = GaugeMetricFamily("lavg15","Load Average 15 minutes", labels=[job])
-       c.add_metric([title], float(lavg[2]))
-       yield c
-       cmd="while read dsk;do awk -v dsk=\"$dsk\" 'NR==FNR { tim=$1;next } $3 == dsk { printf \"%s:%s\",dsk,($13/tim)/100 }' /proc/uptime /proc/diskstats;done <<< $(lsblk -l | awk '$6 == \"disk\" && $1 !~ /fd/ && $1 !~ /cdrom/ { print $1 }')"
-       process = subprocess.Popen(cmd,
+    result = process.communicate()
+    lavg=result[0].split(",")
+    a = GaugeMetricFamily("lavg1","Load Average 1 minute", labels=[job])
+    a.add_metric([title], float(lavg[0]))
+    yield a
+    b = GaugeMetricFamily("lavg5","Load Average 5 minutes", labels=[job])
+    b.add_metric([title], float(lavg[1]))
+    yield b
+    c = GaugeMetricFamily("lavg15","Load Average 15 minutes", labels=[job])
+    c.add_metric([title], float(lavg[2]))
+    yield c
+    cmd="while read dsk;do awk -v dsk=\"$dsk\" 'NR==FNR { tim=$1;next } $3 == dsk { printf \"%s:%s\",dsk,($13/tim)/100 }' /proc/uptime /proc/diskstats;done <<< $(lsblk -l | awk '$6 == \"disk\" && $1 !~ /fd/ && $1 !~ /cdrom/ { print $1 }')"
+    process = subprocess.Popen(cmd,
                               stdout=subprocess.PIPE,
                               stderr=subprocess.PIPE,
                               shell=True)
-       result = process.communicate()
-       for res in result:
-          if (res != ""):
-             resdat=res.split(":")
-             a = GaugeMetricFamily("dskutil_" + resdat[0],"Disk utilisation - " + resdat[0], labels=[job])
-             a.add_metric([title], float(resdat[1]))
-             yield a
-       if (os.environ.get('yotta_instdir')!=None and os.environ.get('ydb_gbldir')!=None and os.environ.get('ydb_dir')!=None and os.environ.get('ydb_rel')!=None):
-          cmd=os.environ.get('yotta_instdir') + "/lke show -all 2>&1 | awk 'BEGIN { cnt=0 } /Owned by PID/ { cnt++ } END { printf \"%s\",cnt }'"
-          process = subprocess.Popen(cmd,
+    result = process.communicate()
+    for res in result:
+       if (res != ""):
+          resdat=res.split(":")
+          a = GaugeMetricFamily("dskutil_" + resdat[0],"Disk utilisation - " + resdat[0], labels=[job])
+          a.add_metric([title], float(resdat[1]))
+          yield a
+    if (os.environ.get('yotta_instdir')!=None and os.environ.get('ydb_gbldir')!=None and os.environ.get('ydb_dir')!=None and os.environ.get('ydb_rel')!=None):
+       cmd=os.environ.get('yotta_instdir') + "/lke show -all 2>&1 | awk 'BEGIN { cnt=0 } /Owned by PID/ { cnt++ } END { printf \"%s\",cnt }'"
+       process = subprocess.Popen(cmd,
                                      stdout=subprocess.PIPE,
                                      stderr=subprocess.PIPE,
                                      shell=True)
-          result = process.communicate()
-          print(cmd)
-          a = GaugeMetricFamily("locks","Number of Global Locks", labels=[job])
-          a.add_metric([title], int(result[0]))
-          yield a
+       result = process.communicate()
+       a = GaugeMetricFamily("locks","Number of Global Locks", labels=[job])
+       a.add_metric([title], int(result[0]))
+       yield a
 
           
 
