@@ -55,8 +55,9 @@ Further details - https://docs.yottadb.com/ProgrammersGuide/utility.html#freecnt
 
 **locks** - Number of global locks active - Needs environmental variable **yotta_instdir** set to the installation directory i.e. **/usr/local/yottadb**, **ydb_gbldir** set the path of the gld file i.e. **/root/.yottadb/r1.30_x86_64/g/yottadb**, **ydb_dir** set to  root directory of globals directory i.e. **/root/.yottadb** and finally **ydb_rel** set to  version number i.e. **r1.30_x86_64**
 
+**rlines** - Total number of routine lines (requires environmental variable yotta_dir to be set i.e. export yotta_dir="/root/.yottadb/V6.3-008_x86_64")
 
-
+**rchange** - Total number of routines modified in the last 5 minutes (requires environmental variable yotta_dir to be set i.e. export yotta_dir="/root/.yottadb/V6.3-008_x86_64")
 
 # Prerequisites
 
