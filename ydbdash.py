@@ -352,6 +352,26 @@ class CustomCollector(object):
        a = GaugeMetricFamily("dbsize","Database Size", labels=[job])
        a.add_metric([title], int(result[0]))
        yield a
+       cmd = "cat " + os.environ.get('yotta_dir') + "/r/*.m | wc -l"
+       process = subprocess.Popen(cmd,
+                              stdout=subprocess.PIPE,
+                              stderr=subprocess.PIPE,
+                              shell=True)
+       result = process.communicate()
+       result1=result[0].replace("\n","")
+       a = GaugeMetricFamily("rlines","Total number of Routine lines", labels=[job])
+       a.add_metric([title], int(result1))
+       yield a
+       cmd = "find \"" + os.environ.get('yotta_dir') + "/r\" -name \"*.m\" -mmin -5 | wc -l"
+       process = subprocess.Popen(cmd,
+                              stdout=subprocess.PIPE,
+                              stderr=subprocess.PIPE,
+                              shell=True)
+       result = process.communicate()
+       result1=result[0].replace("\n","")
+       a = GaugeMetricFamily("rchange","Total number of Routine changed in the last 5 minutes", labels=[job])
+       a.add_metric([title], int(result1))
+       yield a
     cmd = "ss -lnp | grep yotta | wc -l"
     process = subprocess.Popen(cmd,
                               stdout=subprocess.PIPE,
