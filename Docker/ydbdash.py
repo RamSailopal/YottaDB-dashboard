@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import subprocess
 import time
-import http.client
+import httplib
 import glob
 import os
 from prometheus_client.core import GaugeMetricFamily, StateSetMetricFamily, REGISTRY, CounterMetricFamily
