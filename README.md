@@ -193,3 +193,27 @@ Steps:
    
    **password: test**
    
+# Provisioning with Docker and Docker Compose
+
+   cd Docker
+   export yottadatadir="<path to yottadb data directory>"
+   docker compose -d up
+    
+ Log into the Grafana server at http://<docker server IP address>:3001
+    
+ Login with:
+    
+   **username: admin**
+   
+   **password: admin**
+    
+ Create a new password
+    
+ Select the Yottadb dashboard
+    
+ To attain demo metrics, run:
+ 
+     docker run --rm -v "$yottadatadir:/data" -i yottadb/yottadb-base /opt/yottadb/current/ydb <<< 'F I=1:1:10000 S ^TEST("COUNT")=I'
+    
+     docker run --rm -v "$yottadatadir:/data" -i 011ca0bf45bd /opt/yottadb/current/ydb <<< 'F I=1:1:10000 W !,^TEST("COUNT")'
+   
