@@ -218,4 +218,5 @@ Steps:
      docker run --rm -v "$yottadatadir:/data" -i yottadb/yottadb-base /opt/yottadb/current/ydb <<< 'F I=1:1:10000 S ^TEST("COUNT")=I'
     
      docker run --rm -v "$yottadatadir:/data" -i 011ca0bf45bd /opt/yottadb/current/ydb <<< 'F I=1:1:10000 W !,^TEST("COUNT")'
-   
+     
+ **Note: The docker implementation shows "built in" yottadb metrics only and does't implement Promtail and Loki for log file processing**
