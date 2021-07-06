@@ -195,11 +195,13 @@ Steps:
    
 # Provisioning with Docker and Docker Compose
 
-   cd Docker
-   export yottadatadir="<path to yottadb data directory>"
-   docker compose -d up
+      cd Docker
+   
+      export yottadatadir="\<path to yottadb data directory\>"
+   
+      docker compose -d up
     
- Log into the Grafana server at http://<docker server IP address>:3001
+ Log into the Grafana server at http://\<docker server IP address\>:3001
     
  Login with:
     
