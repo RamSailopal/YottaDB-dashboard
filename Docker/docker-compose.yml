@@ -1,0 +1,38 @@
+#
+#       AUTHOR - Raman Sailopal
+#
+#       docker compose yml file for the YottaDB-Dashboard stack
+#
+version: "2"
+services:
+ yottadbdash:
+   image: docker.io/ramb0/yottadbdash
+   ports:
+      - 8083:8083
+   networks:
+      - yottanet
+   mem_limit: 1G
+   pid: host
+   ipc: host
+   environment:
+     - YOTTA_PROM_PORT=8083
+   volumes:
+     - "$yottadatadir:/data"
+ prometheus:
+   image: docker.io/bitnami/prometheus
+   volumes:
+      - "$PWD/prometheus:/opt/bitnami/prometheus/conf"
+   ports:
+      - 9081:9090
+   networks:
+      - yottanet
+ grafana:
+   image: docker.io/grafana/grafana
+   volumes:
+      - "$PWD/provisioning:/etc/grafana/provisioning"
+   ports: 
+      - 3001:3000
+   networks:
+      - yottanet
+networks:
+    yottanet:
