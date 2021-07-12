@@ -92,8 +92,8 @@ class S(BaseHTTPRequestHandler):
            content1 = json.dumps(content)
            return content1  # NOTE: must return a bytes object!
         elif (self.path=="/journal"):
-           if (os.environ.get('yotta_instdir')!=None):
-              cmd="find " + os.environ.get('yotta_instdir') + "/g -name \"*mjl\" -printf \"%h/%f:%s\n\""
+           if (os.environ.get('yotta_dir')!=None):
+              cmd="find " + os.environ.get('yotta_dir') + "/g -name \"*mjl\" -printf \"%h/%f:%s\n\""
               process = subprocess.Popen(cmd,
                                      stdout=subprocess.PIPE,
                                      stderr=subprocess.PIPE,
