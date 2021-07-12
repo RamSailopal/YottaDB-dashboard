@@ -148,9 +148,9 @@ To run:
      
 Similar to ydbdash.sh,  the following environmental variable will need setting before running:
 
- 1) YOTTA_API_PORT - The port for run the YottaDB api process on
- 2) YOTTA_API_IP - The IP address on which to run the api process
- 3) yotta_dir - The data directory for Yottadb
+ 1) **YOTTA_API_PORT** - The port for run the YottaDB api process on
+ 2) **YOTTA_API_IP** - The IP address on which to run the api process
+ 3) **yotta_dir** - The data directory for Yottadb
 
 The process will expose a nmber of different end points that return data in JSON format:
 
