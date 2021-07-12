@@ -137,7 +137,9 @@ The solution runs an M daemon routine that periodically pulls additions to the %
 
 Further details about the M Gateway service integration gateway are available here - https://github.com/chrisemunt/mgsi
 
-A second dashobard is now available that utilised the Grafana infinity datasource to consume API endpoints that expose details about the YottaDB environment:
+# API data processing
+
+A second dashboard is now available that utilised the Grafana infinity datasource to consume API endpoints that expose details about the YottaDB environment:
 
 ![Alt text](yattadb-dash2.PNG?raw=true "YottaDB Dashboard2")
 
