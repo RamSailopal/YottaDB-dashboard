@@ -93,7 +93,7 @@ class S(BaseHTTPRequestHandler):
            return content1  # NOTE: must return a bytes object!
         elif (self.path=="/journal"):
            if (os.environ.get('yotta_dir')!=None):
-              cmd="find " + os.environ.get('yotta_dir') + "/g -name \"*mjl\" -printf \"%h/%f:%s\n\""
+              cmd="find " + os.environ.get('yotta_dir') + "/g -name \"*.mjl*\" -printf \"%h/%f:%s\n\""
               process = subprocess.Popen(cmd,
                                      stdout=subprocess.PIPE,
                                      stderr=subprocess.PIPE,
