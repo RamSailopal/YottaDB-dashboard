@@ -153,6 +153,10 @@ Similar to ydbdash.sh,  the following environmental variable will need setting b
  1) **YOTTA_API_PORT** - The port for run the YottaDB api process on
  2) **YOTTA_API_IP** - The IP address on which to run the api process
  3) **yotta_dir** - The data directory for Yottadb
+ 4) **yotta_instdir** - The installation directory for YottaDB i.e. **/usr/local/yottadb**
+ 5) **ydb_gbldir** - The path of the gld file i.e. **/root/.yottadb/r1.30_x86_64/g/yottadb**
+ 6) **ydb_dir** - The root directory of the globals directory i.e. **/root/.yottadb**
+ 7) **ydb_rel** - The version number i.e. **r1.30_x86_64**
 
 The process will expose a nmber of different end points that return data in JSON format:
 
