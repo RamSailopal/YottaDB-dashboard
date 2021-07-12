@@ -91,6 +91,26 @@ class S(BaseHTTPRequestHandler):
            content= content + ({ "YottaDB release": str(rel), "Upstream base version": str(vers), "Platform": str(plat), "Build date/time": str(buildt), "Build commit SHA": str(buildc) },)
            content1 = json.dumps(content)
            return content1  # NOTE: must return a bytes object!
+        elif (self.path=="/journal"):
+           if (os.environ.get('yotta_instdir')!=None):
+              cmd="find " + os.environ.get('yotta_instdir') + "/g -name \"*mjl\" -printf \"%h/%f:%s\n\""
+              process = subprocess.Popen(cmd,
+                                     stdout=subprocess.PIPE,
+                                     stderr=subprocess.PIPE,
+                                     shell=True)
+              result = process.communicate()
+              content=()
+              count=0
+              resulta=result[0].split("\n")
+              for res in resulta:
+                 if (res != ""):
+                    dat=res.split(":")
+                    fil=dat[0].replace(" ","")
+                    size=dat[1].replace(" ","")
+                    content= content + ({ "File": str(fil), "Size": str(size) },)
+              content1 = json.dumps(content)
+              return content1  # NOTE: must return a bytes object!
+
 
 
        
