@@ -141,6 +141,30 @@ A second dashobard is now available that utilised the Grafana infinity datasourc
 
 ![Alt text](yattadb-dash2.PNG?raw=true "YottaDB Dashboard2")
 
+To run:
+
+     cd apiserver
+     ./apiserver.sh start
+     
+Similar to ydbdash.sh,  the following environmental variable will need setting before running:
+
+ 1) YOTTA_API_PORT - The port for run the YottaDB api process on
+ 2) YOTTA_API_IP - The IP address on which to run the api process
+ 3) yotta_dir - The data directory for Yottadb
+
+The process will expose a nmber of different end points that return data in JSON format:
+
+**/routines** - A list of routines in the YottaDB environment
+
+**/globals** - A list of globals in the YottaDB environment
+
+**/locks** - A list of global locks currently active in the YottaDB environment
+
+**/version** - Version information about the YottaDB environment
+
+**/journals** - A list of journals currently active for the system showing filename and size in bytes
+
+
 
 # Stack setup
 
