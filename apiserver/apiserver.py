@@ -27,7 +27,7 @@ class S(BaseHTTPRequestHandler):
                  count=count+1
                  content= content + ({ "id": str(count), "name": rout },)
            content1 = json.dumps(content)
-           return content1  # NOTE: must return a bytes object!
+           return content1.encode('utf-8')  # NOTE: must return a bytes object!
         elif (self.path=="/globals"):
            cmd = "ydb <<< \"D ^%GD;*;H\" | awk '/^Global/ { prnt=1;next } /^Total/ { prnt=0 } prnt==1&&!/^$/ { print }'"
            process = subprocess.Popen(cmd,
@@ -43,7 +43,7 @@ class S(BaseHTTPRequestHandler):
                  count=count+1
                  content= content + ({ "id": str(count), "name": glob },)
            content1 = json.dumps(content)
-           return content1  # NOTE: must return a bytes object!
+           return content1.encode('utf-8')  # NOTE: must return a bytes object!
         elif (self.path=="/locks"):
            if (os.environ.get('yotta_instdir')!=None and os.environ.get('ydb_gbldir')!=None and os.environ.get('ydb_dir')!=None and os.environ.get('ydb_rel')!=None):
               cmd=os.environ.get('yotta_instdir') + "/lke show -all 2>&1 | awk '/^\^/ { print $1\":\"$5 }'"
@@ -64,7 +64,7 @@ class S(BaseHTTPRequestHandler):
                     if (lck != ""):
                        content= content + ({ "id": str(count), "global": str(lck), "pid": pid },)
                  content1 = json.dumps(content)
-                 return content1  # NOTE: must return a bytes object!
+                 return content1.encode('utf-8')  # NOTE: must return a bytes object!
         elif (self.path=="/version"):
            cmd="ydb -version"
            process = subprocess.Popen(cmd,
@@ -90,7 +90,7 @@ class S(BaseHTTPRequestHandler):
                     buildc=dat[1].replace(" ","")
            content= content + ({ "YottaDB release": str(rel), "Upstream base version": str(vers), "Platform": str(plat), "Build date/time": str(buildt), "Build commit SHA": str(buildc) },)
            content1 = json.dumps(content)
-           return content1  # NOTE: must return a bytes object!
+           return content1.encode('utf-8')  # NOTE: must return a bytes object!
         elif (self.path=="/journal"):
            if (os.environ.get('yotta_dir')!=None):
               cmd="find " + os.environ.get('yotta_dir') + "/g -name \"*.mjl*\" -printf \"%h/%f:%s\n\""
@@ -109,7 +109,7 @@ class S(BaseHTTPRequestHandler):
                     size=dat[1].replace(" ","")
                     content= content + ({ "File": str(fil), "Size": str(size) },)
               content1 = json.dumps(content)
-              return content1  # NOTE: must return a bytes object!
+              return content1.encode('utf-8')  # NOTE: must return a bytes object!
 
 
 
