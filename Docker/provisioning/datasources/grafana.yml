@@ -13,7 +13,72 @@ datasources:
     # <int> org id. will default to orgId 1 if not specified
     orgId: 1
     # <string> custom UID which can be used to reference this datasource in other parts of the configuration, if not specified will be generated automatically
-    uid: my_unique_uid
+    uid: Prometheus
     # <string> url
     url: http://prometheus:9090
     isDefault: true
+  - name: Infinity
+    # <string, required> datasource type. Required
+    type: yesoreyeram-infinity-datasource
+    # <string, required> access mode. proxy or direct (Server or Browser in the UI). Required
+    access: proxy
+    # <int> org id. will default to orgId 1 if not specified
+    orgId: 1
+    # <string> custom UID which can be used to reference this datasource in other parts of the configuration, if not specified will be generated automatically
+    uid: Infinity
+    # <string> url
+    url: http://yottaapi:8082/globals
+    isDefault: false
+  - name: Infinity-1
+    # <string, required> datasource type. Required
+    type: yesoreyeram-infinity-datasource
+    # <string, required> access mode. proxy or direct (Server or Browser in the UI). Required
+    access: proxy
+    # <int> org id. will default to orgId 1 if not specified
+    orgId: 1
+    # <string> custom UID which can be used to reference this datasource in other parts of the configuration, if not specified will be generated automatically
+    uid: Infinity-1
+    # <string> url
+    url: http://yottaapi:8082/routines
+    isDefault: false
+  - name: Infinity-2
+    # <string, required> datasource type. Required
+    type: yesoreyeram-infinity-datasource
+    # <string, required> access mode. proxy or direct (Server or Browser in the UI). Required
+    access: proxy
+    # <int> org id. will default to orgId 1 if not specified
+    orgId: 1
+    # <string> custom UID which can be used to reference this datasource in other parts of the configuration, if not specified will be generated automatically
+    uid: Infinity-2
+    # <string> url
+    url: http://yottaapi:8082/locks
+    isDefault: false
+  - name: Infinity-3
+    # <string, required> datasource type. Required
+    type: yesoreyeram-infinity-datasource
+    # <string, required> access mode. proxy or direct (Server or Browser in the UI). Required
+    access: proxy
+    # <int> org id. will default to orgId 1 if not specified
+    orgId: 1
+    # <string> custom UID which can be used to reference this datasource in other parts of the configuration, if not specified will be generated automatically
+    uid: Infinity-3
+    # <string> url
+    url: http://yottaapi:8082/version
+    isDefault: false
+  - name: Infinity-4
+    # <string, required> datasource type. Required
+    type: yesoreyeram-infinity-datasource
+    # <string, required> access mode. proxy or direct (Server or Browser in the UI). Required
+    access: proxy
+    # <int> org id. will default to orgId 1 if not specified
+    orgId: 1
+    # <string> custom UID which can be used to reference this datasource in other parts of the configuration, if not specified will be generated automatically
+    uid: Infinity-4
+    # <string> url
+    url: http://yottaapi:8082/journal
+    isDefault: false
+
+
+
+
+

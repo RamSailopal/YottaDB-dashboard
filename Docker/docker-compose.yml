@@ -18,6 +18,25 @@ services:
      - YOTTA_PROM_PORT=8083
    volumes:
      - "$yottadatadir:/data"
+ yottaapi:
+   image: docker.io/ramb0/yotta-apiserv
+   ports:
+      - 8082:8082
+   networks:
+      - yottanet
+   mem_limit: 1G
+   pid: host
+   ipc: host
+   environment:
+     - API_PORT=8082
+     - API_SERVER=0.0.0.0
+     - yotta_dir=/data/r1.30_x86_64
+     - yotta_instdir=/opt/yottadb/current
+     - ydb_dir=/data
+     - ydb_rel=r1.30_x86_64
+     - ydb_gbl=/data/r1.30_x86_64/g/yottadb
+   volumes:
+     - "$yottadatadir:/data"
  prometheus:
    image: docker.io/bitnami/prometheus
    volumes:
@@ -34,5 +53,7 @@ services:
       - 3001:3000
    networks:
       - yottanet
+   environment:
+      - GF_INSTALL_PLUGINS=yesoreyeram-infinity-datasource
 networks:
     yottanet:
