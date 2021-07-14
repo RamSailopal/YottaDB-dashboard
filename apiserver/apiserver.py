@@ -45,22 +45,17 @@ class S(BaseHTTPRequestHandler):
            content1 = json.dumps(content)
            return content1.encode('utf-8')  # NOTE: must return a bytes object!
         elif (self.path=="/locks"):
-           print("OK")
            if (os.environ.get('yotta_instdir')!=None and os.environ.get('ydb_gbldir')!=None and os.environ.get('ydb_dir')!=None and os.environ.get('ydb_rel')!=None):
               cmd=os.environ.get('yotta_instdir') + "/lke show -all 2>&1 | awk '/^\^/ { print $1\":\"$5 }'"
-              print(cmd)
               process = subprocess.Popen(cmd,
                                      stdout=subprocess.PIPE,
                                      stderr=subprocess.PIPE,
                                      shell=True)
               result = process.communicate()
-              print(result)
               content=()
               count=0
               for res in result:
-                 print(str(res))
                  if (res.decode('utf-8') != ""):
-                    print(type(res))
                     x=res.decode('utf-8').split(':')
                     lck=x[0]
                     pid=x[1]
@@ -68,7 +63,6 @@ class S(BaseHTTPRequestHandler):
                     if (lck != ""):
                        content= content + ({ "id": str(count), "global": str(lck), "pid": pid },)
                  content1 = json.dumps(content)
-                 print(str(content1))
                  return content1.encode('utf-8')  # NOTE: must return a bytes object!
         elif (self.path=="/version"):
            cmd="ydb -version"
