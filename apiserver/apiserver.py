@@ -4,6 +4,8 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 import subprocess
 import json
 import os
+import urllib2
+import xmltodict
 
 class S(BaseHTTPRequestHandler):
     def _set_headers(self):
@@ -108,6 +110,19 @@ class S(BaseHTTPRequestHandler):
                     fil=dat[0].replace(" ","")
                     size=dat[1].replace(" ","")
                     content= content + ({ "File": str(fil), "Size": str(size) },)
+           content1 = json.dumps(content)
+           return content1.encode('utf-8')  # NOTE: must return a bytes object!
+        elif (self.path=="/blog"):
+           content=()
+           file = urllib2.urlopen('http://yottadb.com/feed/')
+           data = file.read()
+           file.close()
+           data = xmltodict.parse(data)
+           count=0
+           for i in data['rss']['channel']['item']:
+              if (count<=5):
+                 content= content + ({ "Title": str(data['rss']['channel']['item'][count]['title']), "Data": str(data['rss']['channel']['item'][count]['pubDate']), "Link": str(data['rss']['channel']['item'][count]['link']) },)
+              count=count+1
            content1 = json.dumps(content)
            return content1.encode('utf-8')  # NOTE: must return a bytes object!
         else:
