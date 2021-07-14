@@ -4,7 +4,7 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 import subprocess
 import json
 import os
-import urllib2
+import urllib
 import xmltodict
 
 class S(BaseHTTPRequestHandler):
@@ -114,7 +114,7 @@ class S(BaseHTTPRequestHandler):
            return content1.encode('utf-8')  # NOTE: must return a bytes object!
         elif (self.path=="/blog"):
            content=()
-           file = urllib2.urlopen('http://yottadb.com/feed/')
+           file = urllib.request.urlopen('http://yottadb.com/feed/')
            data = file.read()
            file.close()
            data = xmltodict.parse(data)
