@@ -170,6 +170,8 @@ The process will expose a nmber of different end points that return data in JSON
 
 **/journals** - A list of journals currently active for the system showing filename and size in bytes
 
+**/blog** - The last 5 news feeds titles from the official YottaDB website blog
+
 
 
 # Stack setup
