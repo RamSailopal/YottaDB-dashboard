@@ -12,6 +12,9 @@
       name: "Install Yottadb Dashboard"
       role: "ramsailopal.yottadb_dashboard_role"
     -
+      name: "Install Yottadb API Server"
+      role: "ramsailopal.yottadb_apiserver"
+    -
       name: "Install Promtail (without M-Gateway Service)"
       role:  "patrickjahns.promtail"
       vars:
@@ -116,6 +119,9 @@
        copy:
          src: "{{ repodir }}/examples/Yottadb-graf-loki.yaml"
          dest: "/tmp/Yottadb-graf-loki.yaml"
+       with_items:
+         - { src: '{{ repodir }}/examples/Yottadb-graf-loki.yaml', dest: '/tmp/Yottadb-graf-loki.yaml' }
+         - { src: '{{ repodir }}/apiserver/apidash.json', dest: '/tmp/apidash.json' }
 
      - name: "Import Grafana dashboard Yottadb"
        community.grafana.grafana_dashboard:
@@ -125,7 +131,20 @@
          state: "present"
          commit_message: "Updated by ansible"
          overwrite: "yes"
-         path: "/tmp/Yottadb-graf-loki.yaml"
+         path: "{{ item }}"
+       loop:
+           - "/tmp/Yottadb-graf-loki.yaml"
+           - "/tmp/apidash.json"
+
+     - name: "Import Grafana dashboard Yottadb1"
+       community.grafana.grafana_dashboard:
+         grafana_url: "http://{{ grafhost }}:3000"
+         url_username: "admin"
+         url_password: "{{ grafpass }}"
+         state: "present"
+         commit_message: "Updated by ansible"
+         overwrite: "yes"
+         path: "/tmp/apidash.json"
 
 
 
