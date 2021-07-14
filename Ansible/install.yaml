@@ -96,14 +96,22 @@
     - community.grafana
 
    tasks:
-     - name: Create Loki datasource
+     - name: Create datasources
        community.grafana.grafana_datasource:
-         name: "datasource-loki"
+         name: "{{ item.name }}"
          grafana_url: "http://{{ grafhost }}:3000"
          grafana_user: "admin"
          grafana_password: "{{ grafpass }}"
-         ds_type: "loki"
-         ds_url: "http://localhost:3100"
+         ds_type: "{{ item.type }}"
+         ds_url: "{{ item.url }}"
+       with_items:
+         - { name: 'datasource-loki', type: 'loki', url: 'http://localhost:3100' }
+         - { name: 'Infinity', type: 'yesoreyeram-infinity-datasource', url: 'http://localhost:{{ apiport }}/globals' }
+         - { name: 'Infinity-1', type: 'yesoreyeram-infinity-datasource', url: 'http://localhost:{{ apiport }}/routines' }
+         - { name: 'Infinity-2', type: 'yesoreyeram-infinity-datasource', url: 'http://localhost:{{ apiport }}/locks' }
+         - { name: 'Infinity-3', type: 'yesoreyeram-infinity-datasource', url: 'http://localhost:{{ apiport }}/version' }
+         - { name: 'Infinity-4', type: 'yesoreyeram-infinity-datasource', url: 'http://localhost:{{ apiport }}/journal' }
+         - { name: 'Infinity-5', type: 'yesoreyeram-infinity-datasource', url: 'http://localhost:{{ apiport }}/blog' }
 
      - name: Create Prometheus datasource
        community.grafana.grafana_datasource:
@@ -115,7 +123,7 @@
          ds_url: "http://localhost:9090"
          is_default: "yes"
 
-     - name: Copy dashboard yaml to the server
+     - name: Copy dashboard yamls to the server
        copy:
          src: "{{ repodir }}/examples/Yottadb-graf-loki.yaml"
          dest: "/tmp/Yottadb-graf-loki.yaml"
