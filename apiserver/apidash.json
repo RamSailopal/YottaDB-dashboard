@@ -381,7 +381,7 @@
       "type": "table"
     }
   ],
-  "refresh": "30s",
+  "refresh": false,
   "schemaVersion": 26,
   "style": "dark",
   "tags": [],
@@ -410,3 +410,4 @@
   "title": "YottaDB1",
   "uid": "z_qnDNm7k",
   "version": 11
+}
