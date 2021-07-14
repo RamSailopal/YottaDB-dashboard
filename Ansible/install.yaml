@@ -9,7 +9,7 @@
       role: "ramsailopal.yottadb_nodejs"
       when: mgateway == "yes"
     -
-      name: "Install Yottadb"
+      name: "Install Yottadb Dashboard"
       role: "ramsailopal.yottadb_dashboard_role"
     -
       name: "Install Promtail (without M-Gateway Service)"
