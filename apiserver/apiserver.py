@@ -45,6 +45,7 @@ class S(BaseHTTPRequestHandler):
            content1 = json.dumps(content)
            return content1.encode('utf-8')  # NOTE: must return a bytes object!
         elif (self.path=="/locks"):
+           content=()
            if (os.environ.get('yotta_instdir')!=None and os.environ.get('ydb_gbldir')!=None and os.environ.get('ydb_dir')!=None and os.environ.get('ydb_rel')!=None):
               cmd=os.environ.get('yotta_instdir') + "/lke show -all 2>&1 | awk '/^\^/ { print $1\":\"$5 }'"
               process = subprocess.Popen(cmd,
@@ -62,8 +63,8 @@ class S(BaseHTTPRequestHandler):
                     count=count+1
                     if (lck != ""):
                        content= content + ({ "id": str(count), "global": str(lck), "pid": pid },)
-                 content1 = json.dumps(content)
-                 return content1.encode('utf-8')  # NOTE: must return a bytes object!
+           content1 = json.dumps(content)
+           return content1.encode('utf-8')  # NOTE: must return a bytes object!
         elif (self.path=="/version"):
            cmd="ydb -version"
            process = subprocess.Popen(cmd,
@@ -91,6 +92,7 @@ class S(BaseHTTPRequestHandler):
            content1 = json.dumps(content)
            return content1.encode('utf-8')  # NOTE: must return a bytes object!
         elif (self.path=="/journal"):
+           content=()
            if (os.environ.get('yotta_dir')!=None):
               cmd="find " + os.environ.get('yotta_dir') + "/g -name \"*.mjl*\" -printf \"%h/%f:%s\n\""
               process = subprocess.Popen(cmd,
@@ -98,7 +100,6 @@ class S(BaseHTTPRequestHandler):
                                      stderr=subprocess.PIPE,
                                      shell=True)
               result = process.communicate()
-              content=()
               count=0
               resulta=result[0].decode('utf-8').split("\n")
               for res in resulta:
@@ -107,8 +108,12 @@ class S(BaseHTTPRequestHandler):
                     fil=dat[0].replace(" ","")
                     size=dat[1].replace(" ","")
                     content= content + ({ "File": str(fil), "Size": str(size) },)
-              content1 = json.dumps(content)
-              return content1.encode('utf-8')  # NOTE: must return a bytes object!
+           content1 = json.dumps(content)
+           return content1.encode('utf-8')  # NOTE: must return a bytes object!
+        else:
+           content=()
+           content1 = json.dumps(content)
+           return content1.encode('utf-8')  # NOTE: must return a bytes object!
 
 
 
