@@ -19,7 +19,7 @@ class S(BaseHTTPRequestHandler):
                               stderr=subprocess.PIPE,
                               shell=True)
            result = process.communicate()
-           result1=result[0].split(" ")
+           result1=result[0].decode('utf-8').split(" ")
            content=()
            count=0
            for rout in result1:
@@ -35,7 +35,7 @@ class S(BaseHTTPRequestHandler):
                               stderr=subprocess.PIPE,
                               shell=True)
            result = process.communicate()
-           result1=result[0].split(" ")
+           result1=result[0].decode('utf-8').split(" ")
            content=()
            count=0
            for glob in result1:
@@ -45,25 +45,30 @@ class S(BaseHTTPRequestHandler):
            content1 = json.dumps(content)
            return content1.encode('utf-8')  # NOTE: must return a bytes object!
         elif (self.path=="/locks"):
+           print("OK")
            if (os.environ.get('yotta_instdir')!=None and os.environ.get('ydb_gbldir')!=None and os.environ.get('ydb_dir')!=None and os.environ.get('ydb_rel')!=None):
               cmd=os.environ.get('yotta_instdir') + "/lke show -all 2>&1 | awk '/^\^/ { print $1\":\"$5 }'"
+              print(cmd)
               process = subprocess.Popen(cmd,
                                      stdout=subprocess.PIPE,
                                      stderr=subprocess.PIPE,
                                      shell=True)
               result = process.communicate()
+              print(result)
               content=()
               count=0
               for res in result:
-                 if (res != ""):
-                    res=res.replace("\n","")
-                    x=res.split(':')
+                 print(str(res))
+                 if (res.decode('utf-8') != ""):
+                    print(type(res))
+                    x=res.decode('utf-8').split(':')
                     lck=x[0]
                     pid=x[1]
                     count=count+1
                     if (lck != ""):
                        content= content + ({ "id": str(count), "global": str(lck), "pid": pid },)
                  content1 = json.dumps(content)
+                 print(str(content1))
                  return content1.encode('utf-8')  # NOTE: must return a bytes object!
         elif (self.path=="/version"):
            cmd="ydb -version"
@@ -74,7 +79,7 @@ class S(BaseHTTPRequestHandler):
            result = process.communicate()
            content=()
            count=0
-           resulta=result[0].split("\n")
+           resulta=result[0].decode('utf-8').split("\n")
            for res in resulta:
               if (res != ""):
                  dat=res.split(":")
@@ -101,7 +106,7 @@ class S(BaseHTTPRequestHandler):
               result = process.communicate()
               content=()
               count=0
-              resulta=result[0].split("\n")
+              resulta=result[0].decode('utf-8').split("\n")
               for res in resulta:
                  if (res != ""):
                     dat=res.split(":")
@@ -113,7 +118,7 @@ class S(BaseHTTPRequestHandler):
 
 
 
-       
+
 
     def do_GET(self):
         self._set_headers()
@@ -154,3 +159,4 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
     run(addr=args.listen, port=args.port)
+
