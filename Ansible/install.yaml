@@ -106,12 +106,7 @@
          ds_url: "{{ item.url }}"
        with_items:
          - { name: 'datasource-loki', type: 'loki', url: 'http://localhost:3100' }
-         - { name: 'Infinity', type: 'yesoreyeram-infinity-datasource', url: 'http://localhost:{{ apiport }}/globals' }
-         - { name: 'Infinity-1', type: 'yesoreyeram-infinity-datasource', url: 'http://localhost:{{ apiport }}/routines' }
-         - { name: 'Infinity-2', type: 'yesoreyeram-infinity-datasource', url: 'http://localhost:{{ apiport }}/locks' }
-         - { name: 'Infinity-3', type: 'yesoreyeram-infinity-datasource', url: 'http://localhost:{{ apiport }}/version' }
-         - { name: 'Infinity-4', type: 'yesoreyeram-infinity-datasource', url: 'http://localhost:{{ apiport }}/journal' }
-         - { name: 'Infinity-5', type: 'yesoreyeram-infinity-datasource', url: 'http://localhost:{{ apiport }}/blog' }
+
 
      - name: Create Prometheus datasource
        community.grafana.grafana_datasource:
@@ -153,6 +148,22 @@
          commit_message: "Updated by ansible"
          overwrite: "yes"
          path: "/tmp/apidash.json"
+
+     - name: "Add the Infinity datasource"
+       command: grafana-cli plugins install yesoreyeram-infinity-datasource
+
+     - name: "Copy the Infinity datasource configuration into Grafana"
+       copy:
+         remote_src: yes
+         src: /usr/local/YottaDB-Dashboard/Ansible/grafana.yml
+         dest: /etc/grafana/provisioning/datasources/grafana.yml
+
+     - name: "Restart Grafana"
+       systemd:
+         state: restarted
+
+
+
 
 
 
