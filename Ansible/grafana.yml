@@ -14,14 +14,14 @@ datasources:
     access: proxy
     orgId: 1
     uid: Infinity
-    url: http://localhost:8002/globals
+    url: http://localhost:8002/routines
     isDefault: false
   - name: Infinity-1
     type: yesoreyeram-infinity-datasource
     access: proxy
     orgId: 1
     uid: Infinity-1
-    url: http://localhost:8002/routines
+    url: http://localhost:8002/globals
     isDefault: false
   - name: Infinity-2
     type: yesoreyeram-infinity-datasource
