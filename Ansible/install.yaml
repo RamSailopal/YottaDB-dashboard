@@ -120,8 +120,8 @@
 
      - name: Copy dashboard yamls to the server
        copy:
-         src: "{{ repodir }}/examples/Yottadb-graf-loki.yaml"
-         dest: "/tmp/Yottadb-graf-loki.yaml"
+         src: "{{ item.src }}"
+         dest: "{{ item.dest }}"
        with_items:
          - { src: '{{ repodir }}/examples/Yottadb-graf-loki.yaml', dest: '/tmp/Yottadb-graf-loki.yaml' }
          - { src: '{{ repodir }}/apiserver/apidash.json', dest: '/tmp/apidash.json' }
