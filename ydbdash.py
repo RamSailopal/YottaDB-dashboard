@@ -317,8 +317,8 @@ class CustomCollector(object):
     a = GaugeMetricFamily("routs","Total YottaDB Routines", labels=[job])
     a.add_metric([title], int(result[0]))
     yield a
-    if (os.environ.get('yotta_dir') != None):
-       cmd = "find " + os.environ.get('yotta_dir') + "/g -name \"*.mjl*\" -exec stat --printf '%s\n' '{}' \; | awk '{ cnt+=$0 } END { print NR\":\"cnt }'"
+    if (os.environ.get('yotta_dir') != None and os.environ.get('ydb_rel') != None):
+       cmd = "find " + os.environ.get('yotta_dir') + "/" + os.environ.get('ydb_rel') + "/g -name \"*.mjl*\" -exec stat --printf '%s\n' '{}' \; | awk '{ cnt+=$0 } END { print NR\":\"cnt }'"
        process = subprocess.Popen(cmd,
                               stdout=subprocess.PIPE,
                               stderr=subprocess.PIPE,
@@ -332,7 +332,7 @@ class CustomCollector(object):
        b = GaugeMetricFamily("journnum","Total number of Journal files", labels=[job])
        b.add_metric([title], int(result1[0]))
        yield b
-       cmd = "df -h --output=pcent \"" + os.environ.get('yotta_dir') + "\" | tail -1"
+       cmd = "df -h --output=pcent \"" + os.environ.get('yotta_dir') + "/" + os.environ.get('ydb_rel') + "\" | tail -1"
        process = subprocess.Popen(cmd,
                               stdout=subprocess.PIPE,
                               stderr=subprocess.PIPE,
@@ -343,7 +343,7 @@ class CustomCollector(object):
        a = GaugeMetricFamily("sysspace","File system space", labels=[job])
        a.add_metric([title], int(result1))
        yield a
-       cmd = "find " + os.environ.get('yotta_dir') + "/g -name \"*yottadb.dat\" -exec stat --printf '%s\n' '{}' \;"
+       cmd = "find " + os.environ.get('yotta_dir') + "/" + os.environ.get('ydb_rel') + "/g -name \"*yottadb.dat\" -exec stat --printf '%s\n' '{}' \;"
        process = subprocess.Popen(cmd,
                               stdout=subprocess.PIPE,
                               stderr=subprocess.PIPE,
@@ -352,7 +352,7 @@ class CustomCollector(object):
        a = GaugeMetricFamily("dbsize","Database Size", labels=[job])
        a.add_metric([title], int(result[0]))
        yield a
-       cmd = "cat " + os.environ.get('yotta_dir') + "/r/*.m | wc -l"
+       cmd = "cat " + os.environ.get('yotta_dir') + "/" + os.environ.get('ydb_rel') + "/r/*.m | wc -l"
        process = subprocess.Popen(cmd,
                               stdout=subprocess.PIPE,
                               stderr=subprocess.PIPE,
@@ -362,7 +362,7 @@ class CustomCollector(object):
        a = GaugeMetricFamily("rlines","Total number of Routine lines", labels=[job])
        a.add_metric([title], int(result1))
        yield a
-       cmd = "find \"" + os.environ.get('yotta_dir') + "/r\" -name \"*.m\" -mmin -5 | wc -l"
+       cmd = "find \"" + os.environ.get('yotta_dir') + "/" + os.environ.get('ydb_rel') + "/r\" -name \"*.m\" -mmin -5 | wc -l"
        process = subprocess.Popen(cmd,
                               stdout=subprocess.PIPE,
                               stderr=subprocess.PIPE,

@@ -95,8 +95,8 @@ class S(BaseHTTPRequestHandler):
            return content1.encode('utf-8')  # NOTE: must return a bytes object!
         elif (self.path=="/journal"):
            content=()
-           if (os.environ.get('yotta_dir')!=None):
-              cmd="find " + os.environ.get('yotta_dir') + "/g -name \"*.mjl*\" -printf \"%h/%f:%s\n\""
+           if (os.environ.get('yotta_dir')!=None and os.environ.get('ydb_rel')!=None):
+              cmd="find " + os.environ.get('yotta_dir') + "/" + os.environ.get('ydb_rel') + "/g -name \"*.mjl*\" -printf \"%h/%f:%s\n\""
               process = subprocess.Popen(cmd,
                                      stdout=subprocess.PIPE,
                                      stderr=subprocess.PIPE,
