@@ -343,7 +343,7 @@ class CustomCollector(object):
        a = GaugeMetricFamily("sysspace","File system space", labels=[job])
        a.add_metric([title], int(result1))
        yield a
-       cmd = "find " + os.environ.get('yotta_dir') + "/g -name \"*.dat\" -exec stat --printf '%s\n' '{}' \;"
+       cmd = "find " + os.environ.get('yotta_dir') + "/g -name \"*yottadb.dat\" -exec stat --printf '%s\n' '{}' \;"
        process = subprocess.Popen(cmd,
                               stdout=subprocess.PIPE,
                               stderr=subprocess.PIPE,
@@ -358,7 +358,7 @@ class CustomCollector(object):
                               stderr=subprocess.PIPE,
                               shell=True)
        result = process.communicate()
-       result1=result[0].replace("\n","")
+       result1=result[0].decode('utf-8').replace("\n","")
        a = GaugeMetricFamily("rlines","Total number of Routine lines", labels=[job])
        a.add_metric([title], int(result1))
        yield a
@@ -368,7 +368,7 @@ class CustomCollector(object):
                               stderr=subprocess.PIPE,
                               shell=True)
        result = process.communicate()
-       result1=result[0].replace("\n","")
+       result1=result[0].decode('utf-8').replace("\n","")
        a = GaugeMetricFamily("rchange","Total number of Routine changed in the last 5 minutes", labels=[job])
        a.add_metric([title], int(result1))
        yield a
@@ -396,7 +396,7 @@ class CustomCollector(object):
                               stderr=subprocess.PIPE,
                               shell=True)
     result = process.communicate()
-    lavg=result[0].split(",")
+    lavg=result[0].decode('utf-8').split(",")
     a = GaugeMetricFamily("lavg1","Load Average 1 minute", labels=[job])
     a.add_metric([title], float(lavg[0]))
     yield a
@@ -413,8 +413,8 @@ class CustomCollector(object):
                               shell=True)
     result = process.communicate()
     for res in result:
-       if (res != ""):
-          resdat=res.split(":")
+       if (res.decode('utf-8') != ""):
+          resdat=res.decode('utf-8').split(":")
           a = GaugeMetricFamily("dskutil_" + resdat[0],"Disk utilisation - " + resdat[0], labels=[job])
           a.add_metric([title], float(resdat[1]))
           yield a
