@@ -155,7 +155,7 @@
      - name: "Copy the Infinity datasource configuration into Grafana"
        copy:
          remote_src: yes
-         src: /usr/local/YottaDB-Dashboard/Ansible/grafana.yml
+         src: "{{ repodir }}/Ansible/grafana.yml"
          dest: /etc/grafana/provisioning/datasources/grafana.yml
 
      - name: "Restart Grafana"
