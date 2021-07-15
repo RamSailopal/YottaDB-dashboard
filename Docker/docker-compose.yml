@@ -30,7 +30,7 @@ services:
    environment:
      - API_PORT=8082
      - API_SERVER=0.0.0.0
-     - yotta_dir=/data/r1.30_x86_64
+     - yotta_dir=/data
      - yotta_instdir=/opt/yottadb/current
      - ydb_dir=/data
      - ydb_rel=r1.30_x86_64
