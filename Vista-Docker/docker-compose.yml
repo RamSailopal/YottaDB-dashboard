@@ -5,49 +5,16 @@
 #
 version: "2"
 services:
- vista:
-   image: docker.io/vistadataproject/nodevista999
+ yottadbdash:
+   image: docker.io/ramb0/vistadash
    ports:
       - 9330:9430 
       - 32:22 
       - 9100:9000 
       - 9331:8001
-   networks:
-      - yottanet
-   ipc: sharable
-   pid: host
-   volumes:
-     - "$yottadatadir:/home/nodevista"
- yottadbdash:
-   image: docker.io/ramb0/vistadash
-   ports:
       - 8083:8083
    networks:
       - yottanet
-   ipc: sharable
-   pid: host
-   environment:
-     - YOTTA_PROM_PORT=8083
-   volumes:
-     - "$yottadatadir:/home/nodevista"
- yottaapi:
-   image: docker.io/ramb0/vista-apiserv
-   ports:
-      - 8082:8082
-   networks:
-      - yottanet
-   ipc: sharable
-   pid: host
-   environment:
-     - API_PORT=8082
-     - API_SERVER=0.0.0.0
-     - yotta_dir=/home
-     - yotta_instdir=/home/nodevista/lib/gtm
-     - ydb_dir=/home
-     - ydb_rel=nodevista
-     - ydb_gbl=/home/nodevista/g/nodevista
-   volumes:
-     - "$yottadatadir:/data"
  prometheus:
    image: docker.io/bitnami/prometheus
    volumes:
