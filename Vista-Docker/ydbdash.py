@@ -26,15 +26,16 @@ class CustomCollector(object):
     mets=("pit","acc")
     for met in mets:
        if (met=="pit"):
-          cmd="ydb <<< 'D proc^gvstatprom(\"" + reg + "\")' | awk '/^NODEVISTA>/ { next } { print;exit } '"
+          cmd="ydb <<< 'D proc^gvstatprom(\"" + reg + "\")' | awk '/^NODEVISTA>/ { next } { print } '"
        else:
-          cmd="ydb <<< 'D accproc^gvstatprom(\"" + reg + "\")' | awk '/^NODEVISTA>/ { next } { print;exit } '"
+          cmd="ydb <<< 'D accproc^gvstatprom(\"" + reg + "\")' | awk '/^NODEVISTA>/ { next } { print } '"
        process = subprocess.Popen(cmd,
                               stdout=subprocess.PIPE,
                               stderr=subprocess.PIPE,
                               shell=True)
        result = process.communicate()
-       stats=str(result).split(",")
+       result1=result[0].replace("\n","")
+       stats=str(result1).split(",")
        for i in stats:
            stats1=i.split(":")
            if stats1[0] == "DRD":
