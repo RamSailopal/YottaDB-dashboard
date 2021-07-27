@@ -26,9 +26,9 @@ class CustomCollector(object):
     mets=("pit","acc")
     for met in mets:
        if (met=="pit"):
-          cmd="ydb <<< 'D proc^gvstatprom(\"" + reg + "\")' | grep -Ev '(^NODEVISTA>)|(^$)'"
+          cmd="ydb <<< 'D proc^gvstatprom(\"" + reg + "\")' | awk '/^NODEVISTA>/ { next } { print;exit } '"
        else:
-          cmd="ydb <<< 'D accproc^gvstatprom(\"" + reg + "\")' | grep -Ev '(^NODEVISTA>)|(^$)'"
+          cmd="ydb <<< 'D accproc^gvstatprom(\"" + reg + "\")' | awk '/^NODEVISTA>/ { next } { print;exit } '"
        process = subprocess.Popen(cmd,
                               stdout=subprocess.PIPE,
                               stderr=subprocess.PIPE,
