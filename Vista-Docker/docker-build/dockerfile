@@ -1,0 +1,12 @@
+FROM docker.io/vistadataproject/nodevista999
+COPY start.sh /home/nodevista/bin/start.sh
+RUN ln -s /home/nodevista/lib/gtm/gtm /usr/local/bin/ydb 
+RUN ln -sf /bin/bash /bin/sh
+RUN yum makecache
+RUN yum install -y epel-release
+RUN yum install -y git
+RUN yum install -y python2-pip.noarch
+RUN cd /usr/local && git clone https://github.com/RamSailopal/YottaDB-Dashboard.git
+RUN chmod +x /usr/local/YottaDB-Dashboard/install.sh
+RUN pip install prometheus_client
+ENTRYPOINT /home/nodevista/bin/entryCombo.sh
