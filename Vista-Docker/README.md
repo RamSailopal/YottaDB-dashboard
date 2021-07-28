@@ -8,7 +8,7 @@ To run, execute:
 
     docker-compose up
 
-Then navigate to the dashboard by navigating to http://ipofdockerserver:3000
+Then navigate to the dashboard by navigating to http://ipofdockerserver:3001
 
 Enter the default username and password of **admin/admin** and then create a new password. On gaining access. Select the Yottadb dashboard.
 
