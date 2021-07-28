@@ -8,10 +8,10 @@ To run, execute:
 
     docker-compose up
 
-Then navigate to the dashboard by navigating to http://ip of docker server:3000
+Then navigate to the dashboard by navigating to http://ipofdockerserver:3000
 
 Enter the default username and password of admin/admin and then create a new password. On gaining access. Select the Yottadb dashboard.
 
-Access the VISTA GUI by navigating to http://ip of docker server:9100. Select a canned query. 
+Access the VISTA GUI by navigating to http://ipofdockerserver:9100. Select a canned query. 
 
 You will then see the metric changed the YottaDB dashboard.
