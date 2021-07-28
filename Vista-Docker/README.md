@@ -10,7 +10,7 @@ To run, execute:
 
 Then navigate to the dashboard by navigating to http://ipofdockerserver:3000
 
-Enter the default username and password of _admin/admin_ and then create a new password. On gaining access. Select the Yottadb dashboard.
+Enter the default username and password of **admin/admin** and then create a new password. On gaining access. Select the Yottadb dashboard.
 
 Access the VISTA GUI by navigating to http://ipofdockerserver:9100. Select a canned query. 
 
