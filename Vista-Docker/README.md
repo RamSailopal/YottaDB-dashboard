@@ -20,7 +20,7 @@ You will then see the metrics change on the YottaDB dashboard.
 
 ![Alt text](theia-ide.PNG?raw=true "theia IDE")
 
-The integrated Vista/Yottadb dashboard solution now integrates Theia IDE with a custom built mumps language support:
+The integrated Vista/Yottadb dashboard solution now integrates Theia IDE for code reference and amendment with a custom built mumps language support:
 
 Theia project - https://theia-ide.org/
 
