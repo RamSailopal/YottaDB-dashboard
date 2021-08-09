@@ -22,7 +22,9 @@ You will then see the metrics change on the YottaDB dashboard.
 
 The integrated Vista/Yottadb dashboard solution now integrates Theia IDE with a custom built mumps language support:
 
-https://theia-ide.org/
+Theia project - https://theia-ide.org/
+
+MUMPS extension used for language support - https://marketplace.visualstudio.com/items?itemName=dsilin.mumps
 
 ![Alt text](Yottadb-dashboard.png?raw=true "Arch design")
 
