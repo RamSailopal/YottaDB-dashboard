@@ -24,7 +24,7 @@ The integrated Vista/Yottadb dashboard solution now integrates Theia IDE with a 
 
 https://theia-ide.org/
 
-A shared volume is created between the nodevista and theia containers and the code from nodevista is copied from /home/nodevista to the shared volume on initial, vanilla startup. this can take a few minutes. When the below message appears, the IDE is ready for use at http://IPaddress:3002/#/home/vista-settings/Vista.theia-workspace
+A shared volume is created between the nodevista and theia containers and the code from nodevista is copied from /home/nodevista to the shared volume on initial, vanilla startup. this can take a few minutes. When the below message appears, the IDE is ready for use at http://ipofdockerserver:3002/#/home/vista-settings/Vista.theia-workspace
 
       yottadbdash_1  | Theia is now ready for use
       
