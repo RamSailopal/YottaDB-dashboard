@@ -15,3 +15,7 @@ Enter the default username and password of **admin/admin** and then create a new
 Access the VISTA GUI by navigating to http://ipofdockerserver:9100. Select a canned query. 
 
 You will then see the metrics change on the YottaDB dashboard.
+
+# Vista Integration with theia IDE
+
+![Alt text](theia-ide.PNG?raw=true "theia IDE")
