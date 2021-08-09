@@ -6,15 +6,30 @@
 version: "2"
 services:
  yottadbdash:
-   image: docker.io/ramb0/vistadash
+   image: ramb0/vistadash
    ports:
       - 9330:9430 
       - 32:22 
       - 9100:9000 
       - 9331:8001
       - 8083:8083
+      - 8082:8082
    networks:
       - yottanet
+   volumes:
+      - app-volume:/home/project
+
+ ide:
+   image: docker.io/theiaide/theia-full:latest
+   ports:
+      - 3002:3000
+      - 9229:9229
+   networks:
+      - yottanet
+   volumes:
+      - app-volume:/home/project
+      - ./project:/home/vista-settings
+
  prometheus:
    image: docker.io/bitnami/prometheus
    volumes:
@@ -35,3 +50,5 @@ services:
       - GF_INSTALL_PLUGINS=yesoreyeram-infinity-datasource
 networks:
     yottanet:
+volumes:
+    app-volume:
