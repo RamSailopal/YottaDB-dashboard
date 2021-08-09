@@ -28,9 +28,9 @@ A shared volume is created between the nodevista and theia containers and the co
 
       yottadbdash_1  | Theia is now ready for use
       
-So long as the shared volume is not deleted (i.e. the -v flag is not used when issuing docker-compose down), subsequent issues of docker-compose up will cause the IDE to be ready quicker as not code copying will take place.
+So long as the shared volume is not deleted (i.e. the **-v** flag is not used when issuing **docker-compose down**), subsequent issues of **docker-compose up** will cause the IDE to be ready quicker as no code copying will take place.
 
-Although code is referenced an modified in a shared volume, lsyncd is used to sync any modifications and track any changes against the original nodevista code files. An additional process then checks for any lsync actions and automatically compiles any mumps/GT.m code. The compilations can be viewed by opening a terminal. Clean compilations will display with blank spaces between node vista prompts i.e.
+Although code is referenced and modified in a shared volume, lsyncd is used to sync any modifications and track any changes against the original nodevista code files. An additional process then checks for any lsync actions and automatically compiles any mumps/GT.m code. The compilations can be viewed in real time by opening a terminal window. Clean compilations will display with blank spaces between node vista prompts i.e.
 
     Compiling routine FMQLFILT
     which: no icu-config in (/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/nodevista/lib/gtm)
@@ -39,7 +39,7 @@ Although code is referenced an modified in a shared volume, lsyncd is used to sy
 
     NODEVISTA>
     
-Error compilations will display with the error between the prompts i.e.
+Error compilations will display with the error compliation error displayed between the prompts i.e.
  
     Compiling routine FMQLFILT
     which: no icu-config in (/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/nodevista/lib/gtm)
