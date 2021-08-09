@@ -45,7 +45,7 @@ Although code is referenced and modified in a shared volume, lsyncd is used to s
 
     NODEVISTA>
     
-Error compilations will display with the error compliation error displayed between the prompts i.e.
+Error compilations will display with the associated compliation error displayed between the prompts i.e.
  
     Compiling routine FMQLFILT
     which: no icu-config in (/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/nodevista/lib/gtm)
