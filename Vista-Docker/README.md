@@ -26,6 +26,8 @@ Theia project - https://theia-ide.org/
 
 MUMPS extension used for language support - https://marketplace.visualstudio.com/items?itemName=dsilin.mumps
 
+**Design -** 
+
 ![Alt text](Yottadb-dashboard.png?raw=true "Arch design")
 
 A shared volume is created between the nodevista and theia containers and the code from nodevista is copied from /home/nodevista to the shared volume on initial, vanilla startup. this can take a few minutes. When the below message appears, the IDE is ready for use at http://ipofdockerserver:3002/#/home/vista-settings/Vista.theia-workspace
