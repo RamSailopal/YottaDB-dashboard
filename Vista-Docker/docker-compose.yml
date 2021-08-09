@@ -6,7 +6,7 @@
 version: "2"
 services:
  yottadbdash:
-   image: ramb0/vistadash
+   image: docker.io/ramb0/vistadash
    ports:
       - 9330:9430 
       - 32:22 
@@ -20,7 +20,7 @@ services:
       - app-volume:/home/project
 
  ide:
-   image: docker.io/theiaide/theia-full:latest
+   image: docker.io/ramb0/theia-mumps
    ports:
       - 3002:3000
       - 9229:9229

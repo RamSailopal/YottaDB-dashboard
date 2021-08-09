@@ -1,0 +1,4 @@
+FROM docker.io/theiaide/theia-full
+COPY package.json /home/theia/package.json
+COPY settings.json /home/theia/.theia/settings.json
+RUN cd /home/theia && yarn theia download:plugins 

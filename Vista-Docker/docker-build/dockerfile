@@ -1,12 +1,20 @@
 FROM docker.io/vistadataproject/nodevista999
 COPY start.sh /home/nodevista/bin/start.sh
+COPY rcopy.sh /home/nodevista/bin/rcopy.sh
+COPY rcomp.sh /home/nodevista/bin/rcomp.sh
+COPY yottadbdash.env /home/nodevista/etc
 RUN ln -s /home/nodevista/lib/gtm/gtm /usr/local/bin/ydb 
 RUN ln -sf /bin/bash /bin/sh
 RUN yum makecache
 RUN yum install -y epel-release
 RUN yum install -y git
 RUN yum install -y python2-pip.noarch
+RUN yum install -y python36
+RUN yum install -y lsyncd
+COPY lsyncd.conf /etc/lsyncd.conf
 RUN cd /usr/local && git clone https://github.com/RamSailopal/YottaDB-Dashboard.git
 RUN chmod +x /usr/local/YottaDB-Dashboard/install.sh
 RUN pip install prometheus_client
+RUN sed -i 's@^#!/usr/bin/python$@#!/usr/bin/python3.6@p' /usr/local/YottaDB-Dashboard/apiserver/apiserver.py
+RUN python3.6 -m pip install xmltodict
 ENTRYPOINT /home/nodevista/bin/entryCombo.sh
