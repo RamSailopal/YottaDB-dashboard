@@ -148,7 +148,7 @@ To run:
      cd apiserver
      ./apiserver.sh start
      
-Similar to ydbdash.sh,  the following environmental variable will need setting before running:
+Similar to ydbdash.sh,  the following environmental variables will need setting before running:
 
  1) **YOTTA_API_PORT** - The port for run the YottaDB api process on
  2) **YOTTA_API_IP** - The IP address on which to run the api process
