@@ -18,6 +18,7 @@ services:
      - YOTTA_PROM_PORT=8083
    volumes:
      - "$yottadatadir:/data"
+     - app-volume:/home/project
  yottaapi:
    image: docker.io/ramb0/yotta-apiserv
    ports:
@@ -37,6 +38,25 @@ services:
      - ydb_gbl=/data/r1.30_x86_64/g/yottadb
    volumes:
      - "$yottadatadir:/data"
+     - app-volume:/home/project
+ ide:
+   image: docker.io/ramb0/theia-mumps
+   ports:
+      - 3002:3000
+      - 9229:9229
+   networks:
+      - yottanet
+   volumes:
+      - app-volume:/home/project
+      - ./project:/home/yottadb-settings
+ lsync:
+   image: ramb0/yotta-theia
+   networks:
+      - yottanet
+   volumes:
+     - "$yottadatadir:/data"
+     - app-volume:/home/project
+     - ./lsyncd/lsyncd.conf:/etc/lsyncd.conf
  prometheus:
    image: docker.io/bitnami/prometheus
    volumes:
@@ -57,3 +77,6 @@ services:
       - GF_INSTALL_PLUGINS=yesoreyeram-infinity-datasource
 networks:
     yottanet:
+volumes:
+    app-volume:
+
