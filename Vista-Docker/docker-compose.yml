@@ -18,6 +18,8 @@ services:
       - yottanet
    volumes:
       - app-volume:/home/project
+      - .ssh:/root/.ssh
+
 
  ide:
    image: docker.io/ramb0/theia-mumps
@@ -29,6 +31,8 @@ services:
    volumes:
       - app-volume:/home/project
       - ./project:/home/vista-settings
+      - .ssh:/root/.ssh
+      - .theia:/home/theia/.theia
 
  prometheus:
    image: docker.io/bitnami/prometheus
