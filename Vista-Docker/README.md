@@ -58,5 +58,13 @@ Error compilations will display with the associated compliation error displayed 
 
     NODEVISTA>
     
+    
+# Access to GT.M from Theia IDE
+
+Access is now available to the GT.M environment on the Vista/YottaDB-Dashboard container from the Theia IDE. Access is attained through tasks. 
+
+Click **terminal** and then **Run task**, **GTM** and then **Contiunue without scanning the task output**. This will run a terminal window and "drop" you into a NODEVISTA prompt. Normal GT.M functionality, i.e. viewing globals can then be achieved.
+
+**NOTE - The .ssh directory holds  ssh keys for demo/presentation purposes. Use fresh, confidential keys in a production setup.**
 
 
