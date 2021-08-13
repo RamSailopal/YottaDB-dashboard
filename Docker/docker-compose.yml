@@ -6,7 +6,7 @@
 version: "2"
 services:
  yottadbdash:
-   image: docker.io/ramb0/yottadbdash
+   image: ramb0/yottadbdash
    ports:
       - 8083:8083
    networks:
@@ -19,6 +19,7 @@ services:
    volumes:
      - "$yottadatadir:/data"
      - app-volume:/home/project
+     - .ssh:/root/.ssh
  yottaapi:
    image: docker.io/ramb0/yotta-apiserv
    ports:
@@ -49,6 +50,9 @@ services:
    volumes:
       - app-volume:/home/project
       - ./project:/home/yottadb-settings
+      - .ssh:/root/.ssh
+      - .theia:/home/theia/.theia
+
  lsync:
    image: ramb0/yotta-theia
    networks:

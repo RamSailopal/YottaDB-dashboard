@@ -1,0 +1,17 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "YDB",
+			"type": "shell",
+			"command": "sudo bash -c 'ssh -o \"StrictHostKeyChecking Off\" root@docker_yottadbdash_1 \"export ydb_dir=\"/data\" && ydb\"'"
+		},
+        {
+			"label": "Compiler",
+			"type": "shell",
+			"command": "tail -f /home/project/log/rcomp.log"
+		},
+	]
+}
