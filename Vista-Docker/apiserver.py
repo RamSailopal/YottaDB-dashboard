@@ -68,7 +68,7 @@ class S(BaseHTTPRequestHandler):
            content1 = json.dumps(content)
            return content1.encode('utf-8')  # NOTE: must return a bytes object!
         elif (self.path=="/version"):
-           cmd="ydb <<< 'W $ZV' | awk '!/^$/ && !/NODEVISTA/ { print "version:"$0 }'"
+           cmd="ydb <<< 'W $ZV' | awk '!/^$/ && !/NODEVISTA/ { print \"version:\"$0 }'"
            process = subprocess.Popen(cmd,
                                      stdout=subprocess.PIPE,
                                      stderr=subprocess.PIPE,
