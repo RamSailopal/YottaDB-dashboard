@@ -6,7 +6,7 @@
 version: "2"
 services:
  yottadbdash:
-   image: ramb0/vistadash
+   image: docker.io/ramb0/vistadash
    ports:
       - 9330:9430 
       - 32:22 
