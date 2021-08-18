@@ -7,7 +7,7 @@ echo "Starting sshd"
 echo "Starting YottaDB Dashboard processes"
 cd /usr/local/YottaDB-Dashboard && /usr/local/YottaDB-Dashboard/install.sh "/home/nodevista/r"
 /bin/bash -c 'source /home/nodevista/etc/env && export YOTTA_PROM_PORT=8083 && /usr/local/YottaDB-Dashboard/Vista-Docker/ydbdash.py &'
-/bin/bash -c 'source /home/nodevista/etc/env && source /home/nodevista/etc/yottadbdash.env && /usr/local/YottaDB-Dashboard/apiserver/apiserver.py -l 0.0.0.0 -p 8082 &'
+/bin/bash -c 'source /home/nodevista/etc/env && source /home/nodevista/etc/yottadbdash.env && /usr/local/YottaDB-Dashboard/Vista-Docker/apiserver.py -l 0.0.0.0 -p 8082 &'
 echo "Starting vista processes"
 /etc/init.d/nodevistavista start
 echo "Copying routines for Theia IDE"
