@@ -68,8 +68,7 @@ class S(BaseHTTPRequestHandler):
            content1 = json.dumps(content)
            return content1.encode('utf-8')  # NOTE: must return a bytes object!
         elif (self.path=="/version"):
-           cmd="ydb <<< 'W $ZV' | awk '!/^$/ && !/NODEVISTA/ { print \"YottaDB r
-elease:\"$1;print \"Upstream base version:\"$2;print \"Platform:\"$3 }'"
+           cmd="ydb <<< 'W $ZV' | awk '!/^$/ && !/NODEVISTA/ { print \"YottaDB release:\"$1;print \"Upstream base version:\"$2;print \"Platform:\"$3 }'"
            process = subprocess.Popen(cmd,
                                      stdout=subprocess.PIPE,
                                      stderr=subprocess.PIPE,
