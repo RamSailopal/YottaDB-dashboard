@@ -101,8 +101,7 @@ class S(BaseHTTPRequestHandler):
         elif (self.path=="/journal"):
            content=()
            if (os.environ.get('yotta_dir')!=None):
-              cmd="find " + os.environ.get('yotta_dir') + "/j" + " -name \"*.mjl
-*\" -printf \"%h/%f:%s\n\"" 
+              cmd="find " + os.environ.get('yotta_dir') + "/j" + " -name \"*.mjl*\" -printf \"%h/%f:%s\n\"" 
               process = subprocess.Popen(cmd,
                                      stdout=subprocess.PIPE,
                                      stderr=subprocess.PIPE,
