@@ -6,7 +6,7 @@
 version: "2"
 services:
  yottadbdash:
-   image: docker.io/ramb0/vistadash
+   image: ramb0/vistadash
    ports:
       - 9330:9430 
       - 32:22 
@@ -14,6 +14,8 @@ services:
       - 9331:8001
       - 8083:8083
       - 8082:8082
+   environment:
+      - ydb_rel="j"
    networks:
       - yottanet
    volumes:
