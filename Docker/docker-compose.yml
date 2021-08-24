@@ -6,7 +6,7 @@
 version: "2"
 services:
  yottadbdash:
-   image: ramb0/yottadbdash
+   image: docker.io/ramb0/yottadbdash:latest
    ports:
       - 8083:8083
    networks:
@@ -21,7 +21,7 @@ services:
      - app-volume:/home/project
      - .ssh:/root/.ssh
  yottaapi:
-   image: docker.io/ramb0/yotta-apiserv
+   image: docker.io/ramb0/yotta-apiserv:latest
    ports:
       - 8082:8082
    networks:
@@ -41,7 +41,7 @@ services:
      - "$yottadatadir:/data"
      - app-volume:/home/project
  ide:
-   image: docker.io/ramb0/theia-mumps
+   image: docker.io/ramb0/theia-mumps:latest
    ports:
       - 3002:3000
       - 9229:9229
@@ -54,7 +54,7 @@ services:
       - .theia:/home/theia/.theia
 
  lsync:
-   image: ramb0/yotta-theia
+   image: ramb0/yotta-theia:latest
    networks:
       - yottanet
    volumes:
@@ -62,7 +62,7 @@ services:
      - app-volume:/home/project
      - ./lsyncd/lsyncd.conf:/etc/lsyncd.conf
  prometheus:
-   image: docker.io/bitnami/prometheus
+   image: docker.io/bitnami/prometheus:latest
    volumes:
       - "$PWD/prometheus:/opt/bitnami/prometheus/conf"
    ports:
@@ -70,7 +70,7 @@ services:
    networks:
       - yottanet
  grafana:
-   image: docker.io/grafana/grafana
+   image: docker.io/grafana/grafana:latest
    volumes:
       - "$PWD/provisioning:/etc/grafana/provisioning"
    ports: 
