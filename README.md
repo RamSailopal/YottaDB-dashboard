@@ -158,7 +158,7 @@ Similar to ydbdash.sh,  the following environmental variables will need setting 
  6) **ydb_dir** - The root directory of the globals directory i.e. **/root/.yottadb**
  7) **ydb_rel** - The version number i.e. **r1.30_x86_64**
 
-The process will expose a nmber of different end points that return data in JSON format:
+The process will expose a number of different end points that return data in JSON format:
 
 **/routines** - A list of routines in the YottaDB environment
 
