@@ -12,8 +12,6 @@ services:
    networks:
       - yottanet
    mem_limit: 1G
-   pid: host
-   ipc: host
    environment:
      - YOTTA_PROM_PORT=8083
    volumes:
