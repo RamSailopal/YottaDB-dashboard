@@ -6,7 +6,7 @@
 		{
 			"label": "YDB",
 			"type": "shell",
-			"command": "sudo bash -c 'ssh -o \"StrictHostKeyChecking Off\" root@docker_yottadbdash_1 \"export ydb_dir=\"/data\" && ydb\"'"
+			"command": "sudo chmod 0600 /root/.ssh/id_rsa && sudo bash -c 'ssh -o \"StrictHostKeyChecking Off\" root@docker_yottadbdash_1 \"export ydb_dir=\"/data\" && ydb\"'"
 		},
         {
 			"label": "Compiler",

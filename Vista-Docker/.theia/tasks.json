@@ -6,7 +6,7 @@
 		{
 			"label": "GTM",
 			"type": "shell",
-			"command": "sudo ssh -o \"StrictHostKeyChecking Off\" root@vistadocker_yottadbdash_1 ydb"
+			"command": "sudo chmod 0600 /root/.ssh/id_rsa && sudo ssh -o \"StrictHostKeyChecking Off\" root@vistadocker_yottadbdash_1 ydb"
 		},
         {
 			"label": "Compiler",
