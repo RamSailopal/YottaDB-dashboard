@@ -5,6 +5,7 @@
 #	Python code for YottaDB global viewer
 #
 from http.server import HTTPServer, BaseHTTPRequestHandler
+import argparse
 import subprocess
 import os
 import urllib
