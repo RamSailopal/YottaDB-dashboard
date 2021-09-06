@@ -24,7 +24,7 @@ then
         if [[ "$glbviewadd" == "" ]]
         then
                 read -p "Please enter the network address of this server? " add
-                if [[ "$port" =~ [[[:digit:]]{1,3}\.]{3}[[:digit:]]{1,3} ]]
+                if [[ "$add" =~ ([[:digit:]]{1,3}.){3}[[:digit:]]{1,3} ]]
                 then
                         export glbviewadd=$add
                 else
