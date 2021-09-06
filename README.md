@@ -173,6 +173,19 @@ The process will expose a number of different end points that return data in JSO
 **/blog** - The last 5 news feeds titles from the official YottaDB website blog
 
 
+# Global Viewer
+
+A YottaDB global viewer web interface has now been added. The viewer will allow the listing of globals as well as the listing entries (limited to a 1000 entries in each run) in each global. Further entries beyond 1000 can be attained by running an M Query.
+
+To run:
+
+    cd glbview
+    export glbviewport="8001" 
+    export glbviewadd="192.168.240.1"
+    
+Where **glbviewport** is the port you wish the viewer to run on and **glbviewadd** the network address of the server/machine running the process
+
+
 
 # Stack setup
 
