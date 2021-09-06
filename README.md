@@ -188,6 +188,8 @@ To run:
     
 Where **glbviewport** is the port you wish the viewer to run on and **glbviewadd** the network address of the server/machine running the process
 
+Once the process is running, navigate to the web UI through http://ipaddressofmachine:port/
+
 
 
 # Stack setup
