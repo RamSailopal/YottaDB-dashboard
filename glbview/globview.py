@@ -33,13 +33,14 @@ class S(BaseHTTPRequestHandler):
                               stderr=subprocess.PIPE,
                               shell=True)
               result = process.communicate()
-              result1=result[0].replace(" ","")
+              result1=result[0].decode('utf-8').replace(" ","")
               result2=result1.split("^")
               result3=""
               for glb in result2:
                  if (glb!=""):
                     result3 = result3 + "<a href=\"http://" + glbviewadd + ":" + glbviewport + "/" + glb + "\">^" + glb + "</a></br></br>"
-              return("<HTML><BODY><p><img src=\"https://yottadb.com/wp-content/uploads/2018/01/YottaDB_logo.svg\" width=\"300\" height=\"150\"></p><P><H1>Global Directory Listing</H1><DIV style=\"background-color:#ECF0F1;\">" + result3 + "</DIV></P></BODY></HTML>")
+              oresult="<HTML><BODY><p><img src=\"https://yottadb.com/wp-content/uploads/2018/01/YottaDB_logo.svg\" width=\"300\" height=\"150\"></p><P><H1>Global Directory Listing</H1><DIV style=\"background-color:#ECF0F1;\">" + result3 + "</DIV></P></BODY></HTML>"
+              return(oresult.encode())
            elif (glob[0:5]=="QUERY"):
               glob1=glob.split("?")
               query=glob[13::1]
@@ -52,9 +53,10 @@ class S(BaseHTTPRequestHandler):
                               stderr=subprocess.PIPE,
                               shell=True)
               result = process.communicate()
-              result1=result[0].replace("YDB>"," ")
+              result1=result[0].decode('utf-8').replace("YDB>"," ")
               result1=result1.replace("\n","</BR></BR>")
-              return("<HTML><BODY><p><img src=\"https://yottadb.com/wp-content/uploads/2018/01/YottaDB_logo.svg\" width=\"300\" height=\"150\"></p><H1>M Query result for <font color=\"blue\">" + query + "</font></H1><DIV style=\"background-color:#ECF0F1;\">" + result1 + "</DIV></DIV></BODY></HTML>")             
+              oresult="<HTML><BODY><p><img src=\"https://yottadb.com/wp-content/uploads/2018/01/YottaDB_logo.svg\" width=\"300\" height=\"150\"></p><H1>M Query result for <font color=\"blue\">" + query + "</font></H1><DIV style=\"background-color:#ECF0F1;\">" + result1 + "</DIV></DIV></BODY></HTML>"
+              return(oresult.encode())             
            else:
               cmd = "timeout 3 bash -c '(echo \"D ^%G\";echo \"\";echo \"" + glob +"\")|ydb|head -500'"
               process = subprocess.Popen(cmd,
@@ -62,13 +64,14 @@ class S(BaseHTTPRequestHandler):
                               stderr=subprocess.PIPE,
                               shell=True)
               result = process.communicate()
-              result1=result[0].replace("YDB>"," ")
+              result1=result[0].decode('utf-8').replace("YDB>"," ")
               result1=result1.replace("Output device: <terminal>:","<p><img src=\"https://yottadb.com/wp-content/uploads/2018/01/YottaDB_logo.svg\" width=\"300\" height=\"150\"></p><H1>Global Listing for <font color=\"blue\">^" + glob + "</font></H1><P><b>M Query:</b><input type=\"text\" size=\"50\" id=\"mquery\"/><input type=\"button\" value=\"Run\" onClick='location.href=\"http://" + glbviewadd + ":" + glbviewport + "/QUERY?mquery=\" + document.getElementById(\"mquery\").value'/></P><DIV style=\"background-color:#ECF0F1;\">")
               result1=result1.replace("List ^","")
               result1=result1.replace("\n","</BR></BR>")
               result1=result1.replace("</BR></BR> </BR>","")
               result1=result1.replace("</BR></BR></BR><p>","")
-              return("<HTML><BODY>" + result1 + "</DIV></BODY></HTML>")
+              oresult="<HTML><BODY>" + result1 + "</DIV></BODY></HTML>"
+              return(oresult.encode())
 
 
 
