@@ -4,13 +4,10 @@
 #
 #	Python code for YottaDB global viewer
 #
-import argparse
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import subprocess
-import json
 import os
 import urllib
-import xmltodict
 
 class S(BaseHTTPRequestHandler):
     def _set_headers(self):
