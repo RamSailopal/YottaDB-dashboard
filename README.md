@@ -182,6 +182,7 @@ To run:
     cd glbview
     export glbviewport="8001" 
     export glbviewadd="192.168.240.1"
+    ./globview.sh "start"
     
 Where **glbviewport** is the port you wish the viewer to run on and **glbviewadd** the network address of the server/machine running the process
 
