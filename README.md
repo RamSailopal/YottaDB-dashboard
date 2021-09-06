@@ -177,6 +177,8 @@ The process will expose a number of different end points that return data in JSO
 
 A YottaDB global viewer web interface has now been added. The viewer will allow the listing of globals as well as listing entries (limited to a 1000 entries in each run) in each global. Further entries beyond 1000 can be attained by running an M Query.
 
+![Alt text](globview.PNG?raw=true "YottaDB Global Viewer")
+
 To run:
 
     cd glbview
