@@ -1,4 +1,9 @@
 #!/usr/bin/python
+#
+#	AUTHOR - Raman Sailopal
+#
+#	Python code for YottaDB global viewer
+#
 import argparse
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import subprocess
@@ -50,7 +55,7 @@ class S(BaseHTTPRequestHandler):
                               shell=True)
               result = process.communicate()
               result1=result[0].replace("YDB>"," ")
-	      result1=result1.replace("\n","</BR></BR>")
+              result1=result1.replace("\n","</BR></BR>")
               return("<HTML><BODY><p><img src=\"https://yottadb.com/wp-content/uploads/2018/01/YottaDB_logo.svg\" width=\"300\" height=\"150\"></p><H1>M Query result for <font color=\"blue\">" + query + "</font></H1><DIV style=\"background-color:#ECF0F1;\">" + result1 + "</DIV></DIV></BODY></HTML>")             
            else:
               cmd = "timeout 3 bash -c '(echo \"D ^%G\";echo \"\";echo \"" + glob +"\")|ydb|head -500'"
