@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #
 #	AUTHOR - Raman Sailopal
 #
@@ -44,7 +44,7 @@ class S(BaseHTTPRequestHandler):
            elif (glob[0:5]=="QUERY"):
               glob1=glob.split("?")
               query=glob[13::1]
-              query=urllib.unquote(query).decode('utf8')
+              query=urllib.parse.unquote(query)
               query1=query.replace('"','\\"')
               query1=query1.replace("$","\\$")
               cmd = "timeout 3 bash -c '(echo \"" + query1 +"\")|ydb|head -500'" 
