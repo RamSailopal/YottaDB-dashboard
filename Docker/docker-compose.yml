@@ -19,7 +19,7 @@ services:
      - app-volume:/home/project
      - .ssh:/root/.ssh
  yottaglbview:
-   image: docker.io/ramb0/yotta-glbview:latest
+   image: ramb0/yotta-glbview:latest
    ports:
       - 8001:8001
    networks:
@@ -27,8 +27,12 @@ services:
    volumes:
      - "$yottadatadir:/data"
    environment:
-      - glbviewport=8001
-      - glbviewadd=$glbviewadd
+     - glbviewport=8001
+     - glbviewadd=$glbviewadd
+     - yotta_dir=/data
+     - ydb_dir=/data
+     - ydb_rel=r1.30_x86_64
+     - ydb_gbl=/data/r1.30_x86_64/g/yottadb
  yottaapi:
    image: docker.io/ramb0/yotta-apiserv:latest
    ports:
@@ -44,7 +48,6 @@ services:
      - yotta_dir=/data
      - yotta_instdir=/opt/yottadb/current
      - ydb_dir=/data
-
      - ydb_rel=r1.30_x86_64
      - ydb_gbl=/data/r1.30_x86_64/g/yottadb
    volumes:
