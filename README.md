@@ -252,6 +252,8 @@ Steps:
       cd Docker
    
       export yottadatadir="\<path to yottadb data directory\>"
+      
+      export yottavers="r1.32_x86_64"
    
       docker compose up -d
     
