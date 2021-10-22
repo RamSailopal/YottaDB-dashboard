@@ -1,0 +1,89 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vistadash
+spec:
+  selector:
+    app: vistadash
+  ports:
+    - port: 9000
+      targetPort: 9000
+  externalIPs:
+    - $IPADD
+---
+kind: Service
+metadata:
+  name: vistastats
+spec:
+  selector:
+    app: vistadash
+  ports:
+    - port: 8083
+      targetPort: 8083
+  externalIPs:
+    - $IPADD
+---
+kind: Service
+metadata:
+  name: vistalists
+spec:
+  selector:
+    app: vistadash
+  ports:
+    - port: 8082
+      targetPort: 8082
+  externalIPs:
+    - $IPADD
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus
+spec:
+  selector:
+    app: prometheus
+  ports:
+    - port: 9090
+      targetPort: 9090
+  externalIPs:
+    - $IPADD
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana
+spec:
+  selector:
+    app: grafana
+  ports:
+    - port: 3000
+      targetPort: 3000
+  externalIPs:
+    - $IPADD
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ide
+spec:
+  selector:
+    app: ide
+  ports:
+    - port: 3002
+      targetPort: 3000
+  externalIPs:
+    - $IPADD
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ssh
+spec:
+  selector:
+    app: vistadash
+  ports:
+    - port: 22
+      targetPort: 22

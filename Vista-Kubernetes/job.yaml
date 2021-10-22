@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: init-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: init-job
+        image: bitnami/git
+        command: ['/bin/bash', '-c', "cd /home/git && if test -d /home/git/YottaDB-dashboard;then rm -Rf /home/git/YottaDB-dashboard;fi && git clone -b Kubernetes https://github.com/RamSailopal/YottaDB-dashboard.git"]
+        volumeMounts:
+        - mountPath: "/home/git"
+          name: gitvol
+      volumes:
+      - name: gitvol
+        persistentVolumeClaim:
+          claimName: git-pvc
+      restartPolicy: Never
+  backoffLimit: 4

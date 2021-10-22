@@ -1,0 +1,142 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yottamgweb-deploy
+  labels:
+    app: yottadbdash
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: yottadbdash
+  template:
+    metadata:
+      labels:
+        app: yottadbdash
+    spec:
+      containers:
+      - name: yottadbdash
+        image: docker.io/ramb0/vistadash
+        command: ["/bin/bash"]
+        args: ["-c","/home/git/YottaDB-dashboard/Vista-Kubernetes/vistaentry/entrypoint.sh"]
+
+        env:
+        - name: ydb_rel
+          value: "j"
+        ports:
+        - containerPort: 9000
+        - containerPort: 8083
+        - containerPort: 8082
+        volumeMounts:
+        - mountPath: "/home/project"
+          name: demovol
+        - mountPath: "/home/git"
+          name: gitvol
+      volumes:
+      - name: demovol
+        persistentVolumeClaim:
+          claimName: demo-pvc
+      - name: gitvol
+        persistentVolumeClaim:
+          claimName: git-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ide-deployment
+  labels:
+    app: ide
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ide
+  template:
+    metadata:
+      labels:
+        app: ide
+    spec:
+      containers:
+      - name: ide
+        image: docker.io/ramb0/theia-mumps:latest
+        command: ["/bin/bash"]
+        args: ["-c","/home/git/YottaDB-dashboard/Vista-Kubernetes/ideentry/entrypoint.sh"]
+        ports:
+        - containerPort: 3000
+        volumeMounts:
+        - mountPath: "/home/project"
+          name: demovol
+        - mountPath: "/home/git"
+          name: gitvol
+      volumes:
+      - name: demovol
+        persistentVolumeClaim:
+          claimName: demo-pvc
+      - name: gitvol
+        persistentVolumeClaim:
+          claimName: git-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-deployment
+  labels:
+    app: metabase
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+    spec:
+      containers:
+      - name: prometheus
+        image: docker.io/bitnami/prometheus
+        command: ["/bin/bash"]
+        args: ["-c","/home/git/YottaDB-dashboard/Vista-Kubernetes/promentry/entrypoint.sh"]
+        ports:
+        - containerPort: 9090
+        volumeMounts:
+        - mountPath: "/home/git"
+          name: gitvol
+      volumes:
+      - name: gitvol
+        persistentVolumeClaim:
+          claimName: git-pvc
+`
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana-deploy
+  labels:
+    app: grafana
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      labels:
+        app: grafana
+    spec:
+      containers:
+      - name: grafana
+        image: docker.io/grafana/grafana
+        env:
+        - name: GF_INSTALL_PLUGINS
+          value: "yesoreyeram-infinity-datasource"
+        ports:
+        - containerPort: 3000
+        volumeMounts:
+        - mountPath: "/home/git"
+          name: gitvol
+      volumes:
+      - name: gitvol
+        persistentVolumeClaim:
+          claimName: git-pvc
+
