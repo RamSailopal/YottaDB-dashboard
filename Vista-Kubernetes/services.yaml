@@ -12,6 +12,7 @@ spec:
   externalIPs:
     - $IPADD
 ---
+apiVersion: v1
 kind: Service
 metadata:
   name: vistastats
@@ -24,6 +25,7 @@ spec:
   externalIPs:
     - $IPADD
 ---
+apiVersion: v1
 kind: Service
 metadata:
   name: vistalists
