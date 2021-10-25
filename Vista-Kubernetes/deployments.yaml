@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: yottamgweb-deploy
+  name: yottadbdash-deploy
   labels:
     app: yottadbdash
 spec:
@@ -106,7 +106,6 @@ spec:
       - name: gitvol
         persistentVolumeClaim:
           claimName: git-pvc
-`
 ---
 apiVersion: apps/v1
 kind: Deployment
