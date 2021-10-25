@@ -81,7 +81,7 @@ kind: Deployment
 metadata:
   name: prometheus-deployment
   labels:
-    app: metabase
+    app: prometheus
 spec:
   replicas: 2
   selector:
