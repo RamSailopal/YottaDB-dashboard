@@ -65,7 +65,7 @@ spec:
         - containerPort: 3000
         volumeMounts:
         - mountPath: "/home/project"
-          name: demovol
+          name: vistavol
         - mountPath: "/home/git"
           name: gitvol
       volumes:
