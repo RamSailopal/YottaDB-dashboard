@@ -1,0 +1,17 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  "version": "0.2.0",
+  "configurations": [
+      {
+          "type": "mumps",
+          "request": "launch",
+          "name": "Active File",
+          "program": "${file}",
+          "hostname": "vistadocker_yottadbdash_1",
+          "port": 9001,
+          "localRoutinesPath": "y:\",
+          "stopOnEntry": true
+      }
+  ]
+}

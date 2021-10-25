@@ -1,0 +1,192 @@
+!SESSION 2021-08-18 11:11:16.980 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=11.0.11
+java.vendor=Ubuntu
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en
+Command-line arguments:  -data /home/theia/.theia/workspace-storage/db43add6c46496f81daf236c4a1c9170/redhat.java/jdt_ws
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:25.019
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:25.555
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:25.630
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:25.632
+!MESSAGE Initializing Java Language Server 0.48.0.201912051608
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:25.813
+!MESSAGE Installed reference:file:/home/theia/plugins/vscode-java-debug/extension/server/com.microsoft.java.debug.plugin-0.24.0.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:25.821
+!MESSAGE Installed reference:file:/home/theia/plugins/vscode-java-dependency-viewer/extension/server/com.microsoft.jdtls.ext.core-0.6.0.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:25.829
+!MESSAGE Installed reference:file:/home/theia/plugins/vscode-java-test/extension/server/com.microsoft.java.test.plugin-0.22.0.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:25.833
+!MESSAGE Installed reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.eclipse.jdt.junit4.runtime_1.1.1000.v20190510-0840.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:25.838
+!MESSAGE Installed reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.eclipse.jdt.junit5.runtime_1.0.500.v20190510-0840.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:25.844
+!MESSAGE Installed reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.junit.jupiter.api_5.4.0.v20190212-2109.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:25.915
+!MESSAGE Installed reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.junit.jupiter.engine_5.4.0.v20190212-2109.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:25.951
+!MESSAGE Installed reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.junit.jupiter.migrationsupport_5.4.0.v20190212-2109.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:25.961
+!MESSAGE Installed reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.junit.jupiter.params_5.4.0.v20190212-2109.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:25.966
+!MESSAGE Installed reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.junit.vintage.engine_5.4.0.v20190212-2109.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:25.973
+!MESSAGE Installed reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.opentest4j_1.1.1.v20190212-2109.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:25.990
+!MESSAGE Installed reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.junit.platform.commons_1.4.0.v20190212-2109.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.043
+!MESSAGE Installed reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.junit.platform.engine_1.4.0.v20190212-2109.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.047
+!MESSAGE Installed reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.junit.platform.launcher_1.4.0.v20190212-2109.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.050
+!MESSAGE Installed reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.junit.platform.runner_1.4.0.v20190212-2109.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.053
+!MESSAGE Installed reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.junit.platform.suite.api_1.4.0.v20190212-2109.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.055
+!MESSAGE Installed reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.apiguardian_1.0.0.v20190212-2109.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.505
+!MESSAGE Started reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.apiguardian_1.0.0.v20190212-2109.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.506
+!MESSAGE Started reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.eclipse.jdt.junit4.runtime_1.1.1000.v20190510-0840.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.507
+!MESSAGE Started reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.eclipse.jdt.junit5.runtime_1.0.500.v20190510-0840.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.508
+!MESSAGE Started reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.junit.platform.commons_1.4.0.v20190212-2109.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.508
+!MESSAGE Started reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.junit.jupiter.api_5.4.0.v20190212-2109.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.509
+!MESSAGE Started reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.junit.jupiter.params_5.4.0.v20190212-2109.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.511
+!MESSAGE Started reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.junit.platform.runner_1.4.0.v20190212-2109.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.511
+!MESSAGE Started reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.junit.jupiter.migrationsupport_5.4.0.v20190212-2109.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.512
+!MESSAGE Started reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.junit.vintage.engine_5.4.0.v20190212-2109.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.513
+!MESSAGE Started reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.junit.platform.engine_1.4.0.v20190212-2109.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.514
+!MESSAGE Started reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.junit.jupiter.engine_5.4.0.v20190212-2109.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.514
+!MESSAGE Started reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.junit.platform.launcher_1.4.0.v20190212-2109.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.515
+!MESSAGE Started reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.junit.platform.suite.api_1.4.0.v20190212-2109.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.516
+!MESSAGE Started reference:file:/home/theia/plugins/vscode-java-test/extension/server/org.opentest4j_1.1.1.v20190212-2109.jar
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.526
+!MESSAGE Static Commands: []
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.526
+!MESSAGE Non-Static Commands: [java.edit.organizeImports, java.project.updateSourceAttachment, java.project.removeFromSourcePath, java.project.listSourcePaths, java.project.resolveSourceAttachment, java.project.addToSourcePath]
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.527
+!MESSAGE Static Commands: []
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.528
+!MESSAGE Non-Static Commands: [vscode.java.test.search.codelens, vscode.java.test.search.items.all, vscode.java.test.search.location, vscode.java.test.search.items, vscode.java.test.get.testpath, vscode.java.test.junit.argument]
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.528
+!MESSAGE Static Commands: []
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.529
+!MESSAGE Non-Static Commands: [java.project.list, java.getPackageData, java.resolvePath]
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.529
+!MESSAGE Static Commands: []
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.530
+!MESSAGE Non-Static Commands: [vscode.java.checkProjectSettings, vscode.java.isOnClasspath, vscode.java.fetchUsageData, vscode.java.validateLaunchConfig, vscode.java.resolveMainMethod, vscode.java.resolveClasspath, vscode.java.resolveBuildFiles, vscode.java.resolveMainClass, vscode.java.updateDebugSettings, vscode.java.buildWorkspace, vscode.java.startDebugSession, vscode.java.inferLaunchCommandLength, vscode.java.resolveElementAtSelection]
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.558
+!MESSAGE >> initialized
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:26.657
+!MESSAGE Creating the Java project jdt.ls-java-project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:27.147
+!MESSAGE Finished creating the Java project jdt.ls-java-project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:29.534
+!MESSAGE Workspace initialized in 2980ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:29.566
+!MESSAGE >> initialization job finished
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:29.582
+!MESSAGE >> workspace/didChangeConfiguration
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:29.639
+!MESSAGE >>New configuration: {java={debug={logLevel=warn, settings={showHex=false, showStaticVariables=false, showQualifiedNames=false, showLogicalStructure=true, showToString=true, maxStringLength=0.0, hotCodeReplace=manual, enableRunDebugCodeLens=true, forceBuildBeforeLaunch=true, console=integratedTerminal}}, dependency={showOutline=true, syncWithFolderExplorer=true, autoRefresh=true, refreshDelay=2000.0, packagePresentation=flat}, home=/usr/lib/jvm/java-11-openjdk-amd64, jdt={ls={vmargs=-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication}}, errors={incompleteClasspath={severity=warning}}, configuration={checkProjectSettingsExclusions=true, updateBuildConfiguration=interactive, maven={userSettings=null}}, trace={server=off}, import={maven={enabled=true}, gradle={enabled=true, wrapper={enabled=true}, version=null, arguments=null, jvmArguments=null, home=null}, exclusions=[**/node_modules/**, **/.metadata/**, **/archetype-resources/**, **/META-INF/maven/**]}, maven={downloadSources=false, updateSnapshots=false}, referencesCodeLens={enabled=false}, signatureHelp={enabled=false}, implementationsCodeLens={enabled=false}, format={enabled=true, settings={url=null, profile=null}, comments={enabled=true}, onType={enabled=true}}, saveActions={organizeImports=false}, contentProvider={preferred=null}, autobuild={enabled=true}, maxConcurrentBuilds=1.0, completion={enabled=true, overwrite=true, guessMethodArguments=false, favoriteStaticMembers=[org.junit.Assert.*, org.junit.Assume.*, org.junit.jupiter.api.Assertions.*, org.junit.jupiter.api.Assumptions.*, org.junit.jupiter.api.DynamicContainer.*, org.junit.jupiter.api.DynamicTest.*, org.mockito.Mockito.*, org.mockito.ArgumentMatchers.*, org.mockito.Answers.*], filteredTypes=[java.awt.*, com.sun.*], importOrder=[java, javax, com, org]}, foldingRange={enabled=true}, progressReports={enabled=true}, codeGeneration={hashCodeEquals={useJava7Objects=false, useInstanceof=false}, useBlocks=false, generateComments=false, toString={template=${object.className} [${member.name()}=${member.value}, ${otherMembers}], codeStyle=STRING_CONCATENATION, skipNullValues=false, listArrayContents=true, limitElements=0.0}}, selectionRange={enabled=true}, showBuildStatusOnStart={enabled=false}, test={report={showAfterExecution=onFailure, position=sideView}, editor={enableShortcuts=true}, log={level=info}, message={hintForDeprecatedConfig=true, hintForSetingDefaultConfig=true}, defaultConfig=, config={}}}}
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:29.880
+!MESSAGE >> workspace/executeCommand vscode.java.test.get.testpath
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:29.967
+!MESSAGE >> build jobs finished
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:29.969
+!MESSAGE >> registerFeature 'workspace/didChangeWatchedFiles'
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:29.970
+!MESSAGE >> registerFeature 'workspace/didChangeWatchedFiles'
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:29.972
+!MESSAGE >> watchers registered
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:11:30.331
+!MESSAGE >> workspace/didChangeWatchedFiles 
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:12:35.262
+!MESSAGE >> workspace/didChangeWatchedFiles 
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:12:53.622
+!MESSAGE >> workspace/didChangeWatchedFiles 
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:13:31.166
+!MESSAGE >> shutdown
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:13:31.620
+!MESSAGE >> exit
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:13:31.621
+!MESSAGE Shutdown received... waking up main thread
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-08-18 11:13:31.824
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is stopping:

@@ -1,0 +1,5 @@
+{
+  message: 'Starting Java server with: /usr/lib/jvm/java-11-openjdk-amd64/bin/java --add-modules=ALL-SYSTEM --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED -Declipse.application=org.eclipse.jdt.ls.core.id1 -Dosgi.bundles.defaultStartLevel=4 -Declipse.product=org.eclipse.jdt.ls.core.product -Dfile.encoding=utf8 -noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication -jar /home/theia/plugins/vscode-java-redhat/extension/server/plugins/org.eclipse.equinox.launcher_1.5.600.v20191014-2022.jar -configuration /home/theia/plugins/vscode-java-redhat/extension/server/config_linux -data /home/theia/.theia/workspace-storage/db43add6c46496f81daf236c4a1c9170/redhat.java/jdt_ws',
+  level: 'info',
+  timestamp: '2021-08-18 11:11:14.835'
+}

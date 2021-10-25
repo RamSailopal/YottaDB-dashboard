@@ -1,0 +1,17 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "GTM",
+			"type": "shell",
+			"command": "sudo chmod 0600 /root/.ssh/id_rsa && sudo ssh -o \"StrictHostKeyChecking Off\" root@ssh ydb"
+		},
+        {
+			"label": "Compiler",
+			"type": "shell",
+			"command": "tail -f /home/project/log/rcomp.log"
+		},
+	]
+}
