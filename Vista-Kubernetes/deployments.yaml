@@ -148,7 +148,7 @@ spec:
         - /var/lib/grafana
         volumeMounts:
         - name: grafanavol
-        mountPath: /var/lib/grafana 
+          mountPath: /var/lib/grafana 
       volumes:
       - name: gitvol
         persistentVolumeClaim:
