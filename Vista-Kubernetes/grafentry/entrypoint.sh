@@ -1,3 +1,3 @@
-cp -Rf /home/git/YottaDB-dashboard/provisioning/* /etc/grafana/provisioning
+cp -Rf /home/git/YottaDB-dashboard/Vista-Kubernetes/provisioning/* /etc/grafana/provisioning
 cd /usr/share/grafana
 ./run.sh
