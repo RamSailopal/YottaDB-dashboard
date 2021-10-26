@@ -138,7 +138,17 @@ spec:
           name: gitvol
         - mountPath: "/var/lib/grafana"
           name: grafanavol
-
+        initContainers:
+        - name: take-data-dir-ownership
+          image: alpine:3
+          command:
+          - chown
+          - -R
+          - 472:472
+            - /var/lib/grafana
+          volumeMounts:
+          - name: grafanavol
+          mountPath: /var/lib/grafana 
       volumes:
       - name: gitvol
         persistentVolumeClaim:
