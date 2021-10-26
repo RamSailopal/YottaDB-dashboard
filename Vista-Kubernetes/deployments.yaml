@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: yottadbdash-deploy
+  name: vistadash-deploy
   labels:
-    app: yottadbdash
+    app: vistadash
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: yottadbdash
+      app: vistadash
   template:
     metadata:
       labels:
-        app: yottadbdash
+        app: vistadash
     spec:
       containers:
-      - name: yottadbdash
+      - name: vistadash
         image: docker.io/ramb0/vistadash
         command: ["/bin/bash"]
         args: ["-c","/home/git/YottaDB-dashboard/Vista-Kubernetes/vistaentry/entrypoint.sh"]
