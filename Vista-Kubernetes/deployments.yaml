@@ -134,8 +134,15 @@ spec:
         volumeMounts:
         - mountPath: "/home/git"
           name: gitvol
+        - mountPath: "/var/lib/grafana"
+          name: grafanavol
+
       volumes:
       - name: gitvol
         persistentVolumeClaim:
           claimName: git-pvc
+      - name: grafanavol
+        persistentVolumeClaim:
+          claimName: grafana-pvc
+
 
