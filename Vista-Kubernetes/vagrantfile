@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
   sudo systemctl stop firewalld
   sudo yum install -y epel
   sudo yum install -y git
-  cd /usr/local && git clone -b Kubernetes https://github.com/RamSailopal/YottaDB-dashboard.git
+  cd /usr/local && git clone https://github.com/RamSailopal/YottaDB-dashboard.git
   sudo mkdir -p /mnt/kube/volume
   sudo mkdir -p /mnt/kube/volume1
   sudo mkdir -p /mnt/kube/volume2
