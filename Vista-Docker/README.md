@@ -67,4 +67,27 @@ Click **terminal** and then **Run task**, **GTM** and then **Continue without sc
 
 **NOTE - The .ssh directory holds  ssh keys for demo/presentation purposes. Use fresh, confidential keys in a production setup.**
 
+# Access to Code Changes
+
+Any code is held in the shared docker volume hosted on the Docker host machine called **vistadocker_app-volume**. This can be accessed by executing the following command:
+
+    docker volume inspect vistadocker_app-volume
+    
+    [
+       {
+           "Name": "vistadocker_app-volume",
+           "Driver": "local",
+           "Mountpoint": "/var/lib/docker/volumes/vistadocker_app-volume/_data",
+           "Labels": null,
+           "Scope": "local"
+       }
+    ]
+    
+ The code can then be referenced on the Docker host by running:
+ 
+     ls -l /var/lib/docker/volumes/vistadocker_app-volume/_data
+    
+
+    
+
 
