@@ -1,5 +1,8 @@
 {
     "files.associations": {
         "*.m": "mumps"
+    },
+    "code-runner.executorMap": {
+        "mumps": "sudo chmod 0600 /root/.ssh/id_rsa && sudo ssh -o \"StrictHostKeyChecking Off\" root@vistadocker_yottadbdash_1 'ydb <<< \"D ^$fileNameWithoutExt\"'
     }
 }
