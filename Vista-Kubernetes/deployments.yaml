@@ -27,6 +27,12 @@ spec:
         - containerPort: 9000
         - containerPort: 8083
         - containerPort: 8082
+        livenessProbe:
+          httpGet:
+           path: /
+           port: 9000
+          initialDelaySeconds: 10
+          periodSeconds: 3
         volumeMounts:
         - mountPath: "/home/project"
           name: vistavol
@@ -63,6 +69,12 @@ spec:
         args: ["-c","/home/git/YottaDB-dashboard/Vista-Kubernetes/ideentry/entrypoint.sh"]
         ports:
         - containerPort: 3000
+        livenessProbe:
+          httpGet:
+           path: /
+           port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 3
         volumeMounts:
         - mountPath: "/home/project"
           name: vistavol
@@ -99,6 +111,12 @@ spec:
         args: ["-c","/home/git/YottaDB-dashboard/Vista-Kubernetes/promentry/entrypoint.sh"]
         ports:
         - containerPort: 9090
+        livenessProbe:
+          httpGet:
+           path: /
+           port: 9090
+          initialDelaySeconds: 10
+          periodSeconds: 3
         volumeMounts:
         - mountPath: "/home/git"
           name: gitvol
@@ -133,6 +151,11 @@ spec:
           value: "yesoreyeram-infinity-datasource"
         ports:
         - containerPort: 3000
+        livenessProbe:
+          tcpSocket:
+           port: 3000
+          initialDelaySeconds: 180
+          periodSeconds: 3
         volumeMounts:
         - mountPath: "/home/git"
           name: gitvol
