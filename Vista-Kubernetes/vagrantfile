@@ -2,8 +2,10 @@ Vagrant.configure("2") do |config|
   config.vm.box = "mrvantage/centos7-minikube"
   config.vm.network "forwarded_port", guest: 3002, host: 3002, host_ip: "127.0.0.1"
   config.vm.network "forwarded_port", guest: 3000, host: 3000, host_ip: "127.0.0.1"
-  config.vm.network "forwarded_port", guest: 8001, host: 8001, host_ip: "127.0.0.1"
-  config.vm.network "forwarded_port", guest: 8080, host: 8080, host_ip: "127.0.0.1"
+  config.vm.network "forwarded_port", guest: 8082, host: 8082, host_ip: "127.0.0.1"
+  config.vm.network "forwarded_port", guest: 8083, host: 8083, host_ip: "127.0.0.1"
+  config.vm.network "forwarded_port", guest: 9000, host: 9000, host_ip: "127.0.0.1"
+  config.vm.network "forwarded_port", guest: 9090, host: 9090, host_ip: "127.0.0.1"
   config.vm.provider "virtualbox" do |vb|
     vb.customize ["modifyvm", :id, "--cpuexecutioncap", "40"]
     vb.memory = "3072"
@@ -15,9 +17,10 @@ Vagrant.configure("2") do |config|
   cd /usr/local && git clone -b Kubernetes https://github.com/RamSailopal/YottaDB-dashboard.git
   sudo mkdir -p /mnt/kube/volume
   sudo mkdir -p /mnt/kube/volume1
+  sudo mkdir -p /mnt/kube/volume2
   cd /usr/local/YottaDB-dashboard/Vista-Kubernetes
   sudo chown vagrant *
-  export IPADD=$(ping -c 1 $(hostname) | awk -F '[()]' 'NR==1 { print $2 }') && sed -i 's/\$IPADD/'$IPADD'/' services.yaml && sed -i 's/\$IPADD/'$IPADD'/' metaentry/entrypoint.sh
+  export IPADD=$(ping -c 1 $(hostname) | awk -F '[()]' 'NR==1 { print $2 }') && sed -i 's/\$IPADD/'$IPADD'/' services.yaml
   kubectl create namespace test 
   kubectl config set-context test --namespace=test --cluster=minikube --user=minikube
   kubectl config use-context test
@@ -26,8 +29,12 @@ Vagrant.configure("2") do |config|
   kubectl apply -f job.yaml
   kubectl apply -f deployments.yaml
   kubectl apply -f services.yaml
-  cnt=0;echo "Waiting for all pods to deploy ....";while [[ "$cnt" != "5" ]];do sleep 1;cnt=$(kubectl get pods | awk 'BEGIN { cnt=0 } NR > 1 && $3 == "Running" { cnt+=1 } END { print cnt }');echo "Deploying into Kubernetes, please wait...";echo "$cnt pods running";done
+  cnt=0;echo "Waiting for all pods to deploy ....";while [[ "$cnt" != "7" ]];do sleep 1;cnt=$(kubectl get pods | awk 'BEGIN { cnt=0 } NR > 1 && $3 == "Running" { cnt+=1 } END { print cnt }');echo "Deploying into Kubernetes, please wait...";echo "$cnt pods running";done
   echo "Kubernetes deployment is now running!!!"
+  kubectl autoscale deployment ide-deployment --min=2 --max=5 --cpu-percent=80
+  kubectl autoscale deployment grafana-deploy --min=2 --max=5 --cpu-percent=80
+  kubectl autoscale deployment prometheus-deployment --min=2 --max=5 --cpu-percent=80
   SHELL
   end
+
 
