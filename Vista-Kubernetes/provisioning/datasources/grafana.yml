@@ -42,14 +42,14 @@ datasources:
     access: proxy
     orgId: 1
     uid: Infinity-5
-    url: http://vistalists:8082/journal
+    url: http://vistalists:8082/blog
     isDefault: false
   - name: Infinity-5
     type: yesoreyeram-infinity-datasource
     access: proxy
     orgId: 1
     uid: Infinity-4
-    url: http://vistalists:8082/blog
+    url: http://vistalists:8082/journal
     isDefault: false
 
 
