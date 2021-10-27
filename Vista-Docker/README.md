@@ -86,6 +86,8 @@ Any code is held in the shared docker volume hosted on the Docker host machine c
  The code can then be referenced on the Docker host by running:
  
      ls -l /var/lib/docker/volumes/vistadocker_app-volume/_data
+     
+It is important to ensure that **docker-compose down** is used as opposed to **docker compose -v** to allow code persistence
     
 
     
