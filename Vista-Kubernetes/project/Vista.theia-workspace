@@ -1,0 +1,20 @@
+{
+   "folders": [
+      {
+         "path": "file:///home/project/Vista"
+      }
+   ],
+   "settings": { "terminal.integrated.shellArgs.linux": ["-c", "tail -f /home/project/log/rcomp.log"] },
+   "tasks": [
+		{
+			"label": "GTM",
+			"type": "shell",
+			"command": "ssh -o sudo ssh -o \"StrictHostKeyChecking Off\" root@ssh ydb"
+		},
+        {
+			"label": "Compiler",
+			"type": "shell",
+			"command": "tail -f /home/project/log/rcomp.log"
+		},
+	]
+}
