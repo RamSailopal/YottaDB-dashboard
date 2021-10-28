@@ -38,13 +38,16 @@ spec:
           name: vistavol
         - mountPath: "/home/git"
           name: gitvol
+       - mountPath: "/home/nodevista/g"
+          name: nodevistavol
       volumes:
       - name: vistavol
         persistentVolumeClaim:
           claimName: vista-pvc
-      - name: gitvol
+      - name: nodevistavol
         persistentVolumeClaim:
-          claimName: git-pvc
+          claimName: nodevista-pvc
+
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -80,6 +83,8 @@ spec:
           name: vistavol
         - mountPath: "/home/git"
           name: gitvol
+        - mountPath: "/home/theia/.theia"
+          name: idevol
       volumes:
       - name: vistavol
         persistentVolumeClaim:
@@ -87,6 +92,9 @@ spec:
       - name: gitvol
         persistentVolumeClaim:
           claimName: git-pvc
+     - name: idevol
+        persistentVolumeClaim:
+          claimName: ide-pvc
 ---
 apiVersion: apps/v1
 kind: Deployment

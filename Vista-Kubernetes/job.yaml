@@ -8,13 +8,45 @@ spec:
       containers:
       - name: init-job
         image: bitnami/git
-        command: ['/bin/bash', '-c', "cd /home/git && if test -d /home/git/YottaDB-dashboard;then rm -Rf /home/git/YottaDB-dashboard;fi && git clone -b Kubernetes https://github.com/RamSailopal/YottaDB-dashboard.git"]
+        command: ['/bin/bash', '-c', "cd /home/git && if test -d /home/git/YottaDB-dashboard;then rm -Rf /home/git/YottaDB-dashboard;fi && git clone -b Kubernetes https://github.com/RamSailopal/YottaDB-dashboard.git && cp -Rf /home/git/YottaDB-dashboard/Vista-Kubernetes/.theia/* /home/theia && chown -Rf 1000:1000 /home/theia"]
         volumeMounts:
         - mountPath: "/home/git"
           name: gitvol
+        - mountPath: "/home/theia"
+          name: idevol
       volumes:
       - name: gitvol
         persistentVolumeClaim:
           claimName: git-pvc
+      - name: idevol
+        persistentVolumeClaim:
+          claimName: ide-pvc
       restartPolicy: Never
   backoffLimit: 4
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: init-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: init-job1
+        image: bitnami/git
+        command: ['/bin/bash', '-c', "cp -Rf /home/nodevista/g/* /home/nodeshare && chown -Rf 1000:1000 /home/nodeshare"]
+        volumeMounts:
+        - mountPath: "/home/git"
+          name: gitvol
+        - mountPath: "/home/theia"
+          name: idevol
+      volumes:
+      - name: gitvol
+        persistentVolumeClaim:
+          claimName: git-pvc
+      - name: idevol
+        persistentVolumeClaim:
+          claimName: ide-pvc
+      restartPolicy: Never
+  backoffLimit: 4
+
