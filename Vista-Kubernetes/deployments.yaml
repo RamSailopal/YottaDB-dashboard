@@ -60,7 +60,7 @@ metadata:
   labels:
     app: ide
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: ide
