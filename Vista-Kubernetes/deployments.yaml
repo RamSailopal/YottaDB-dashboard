@@ -18,7 +18,7 @@ spec:
       - name: vistadash
         image: docker.io/ramb0/vistadash
         command: ["/bin/bash"]
-        args: ["-c","/home/git/YottaDB-Dashboard/Vista-Kubernetes/vistaentry/entrypoint.sh"]
+        args: ["-c","/home/git/YottaDB-dashboard/Vista-Kubernetes/vistaentry/entrypoint.sh"]
 
         env:
         - name: ydb_rel
@@ -73,7 +73,7 @@ spec:
       - name: ide
         image: docker.io/ramb0/theia-mumps:latest
         command: ["/bin/bash"]
-        args: ["-c","/home/git/YottaDB-Dashboard/Vista-Kubernetes/ideentry/entrypoint.sh"]
+        args: ["-c","/home/git/YottaDB-dashboard/Vista-Kubernetes/ideentry/entrypoint.sh"]
         ports:
         - containerPort: 3000
         livenessProbe:
@@ -120,7 +120,7 @@ spec:
       - name: prometheus
         image: docker.io/bitnami/prometheus
         command: ["/bin/bash"]
-        args: ["-c","/home/git/YottaDB-Dashboard/Vista-Kubernetes/promentry/entrypoint.sh"]
+        args: ["-c","/home/git/YottaDB-dashboard/Vista-Kubernetes/promentry/entrypoint.sh"]
         ports:
         - containerPort: 9090
         livenessProbe:
@@ -157,7 +157,7 @@ spec:
       - name: grafana
         image: docker.io/grafana/grafana
         command: ["/bin/bash"]
-        args: ["-c","/home/git/YottaDB-Dashboard/Vista-Kubernetes/grafentry/entrypoint.sh"]
+        args: ["-c","/home/git/YottaDB-dashboard/Vista-Kubernetes/grafentry/entrypoint.sh"]
         env:
         - name: GF_INSTALL_PLUGINS
           value: "yesoreyeram-infinity-datasource"
