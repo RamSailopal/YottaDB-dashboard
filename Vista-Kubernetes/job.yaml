@@ -36,17 +36,12 @@ spec:
         image: docker.io/ramb0/vistadash
         command: ['/bin/bash', '-c', "cp -Rf /home/nodevista/g/* /home/nodeshare && chown -Rf 1000:1000 /home/nodeshare"]
         volumeMounts:
-        - mountPath: "/home/git"
-          name: gitvol
-        - mountPath: "/home/theia"
-          name: idevol
+        - mountPath: "/home/nodevista"
+          name: nodevistavol
       volumes:
-      - name: gitvol
+      - name: nodevistavol
         persistentVolumeClaim:
-          claimName: git-pvc
-      - name: idevol
-        persistentVolumeClaim:
-          claimName: ide-pvc
+          claimName: nodevista-pvc
       restartPolicy: Never
   backoffLimit: 4
 
