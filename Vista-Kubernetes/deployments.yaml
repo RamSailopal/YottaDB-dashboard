@@ -47,6 +47,10 @@ spec:
       - name: nodevistavol
         persistentVolumeClaim:
           claimName: nodevista-pvc
+      - name: gitvol
+        persistentVolumeClaim:
+          claimName: git-pvc
+
 
 ---
 apiVersion: apps/v1
@@ -92,7 +96,7 @@ spec:
       - name: gitvol
         persistentVolumeClaim:
           claimName: git-pvc
-     - name: idevol
+      - name: idevol
         persistentVolumeClaim:
           claimName: ide-pvc
 ---
