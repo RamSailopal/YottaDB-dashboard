@@ -23,25 +23,4 @@ spec:
           claimName: ide-pvc
       restartPolicy: Never
   backoffLimit: 4
----
-apiVersion: batch/v1
-kind: Job
-metadata:
-  name: init-job1
-spec:
-  template:
-    spec:
-      containers:
-      - name: init-job1
-        image: docker.io/ramb0/vistadash
-        command: ['/bin/bash', '-c', "cp -Rf /home/nodevista/g/* /home/nodeshare && chown -Rf 1000:1000 /home/nodeshare"]
-        volumeMounts:
-        - mountPath: "/home/nodevista"
-          name: nodevistavol
-      volumes:
-      - name: nodevistavol
-        persistentVolumeClaim:
-          claimName: nodevista-pvc
-      restartPolicy: Never
-  backoffLimit: 4
 
