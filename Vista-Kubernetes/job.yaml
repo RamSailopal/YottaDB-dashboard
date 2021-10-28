@@ -27,13 +27,13 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: init-job
+  name: init-job1
 spec:
   template:
     spec:
       containers:
       - name: init-job1
-        image: bitnami/git
+        image: docker.io/ramb0/vistadash
         command: ['/bin/bash', '-c', "cp -Rf /home/nodevista/g/* /home/nodeshare && chown -Rf 1000:1000 /home/nodeshare"]
         volumeMounts:
         - mountPath: "/home/git"
