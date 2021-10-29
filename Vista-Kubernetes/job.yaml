@@ -7,14 +7,25 @@ spec:
     spec:
       containers:
       - name: init-job
-        image: bitnami/git
-        command: ['/bin/bash', '-c', "cd /home/git && if test -d /home/git/YottaDB-dashboard;then rm -Rf /home/git/YottaDB-dashboard;fi && git clone -b Kubernetes https://github.com/RamSailopal/YottaDB-dashboard.git"]
+        image: docker.io/ramb0/vistadash
+        command: ['/bin/bash', '-c', "cd /home/git && if test -d /home/git/YottaDB-dashboard;then rm -Rf /home/git/YottaDB-dashboard;fi && git clone -b coderun https://github.com/RamSailopal/YottaDB-dashboard.git && cp -Rf /home/git/YottaDB-dashboard/Vista-Kubernetes/.theia/* /home/theia && chown -Rf 1000:1000 /home/theia && cp /home/nodevista/g/nodevista.* /home/vistashare"]
         volumeMounts:
         - mountPath: "/home/git"
           name: gitvol
+        - mountPath: "/home/theia"
+          name: idevol
+        - mountPath: "/home/vistashare"
+          name: nodevistavol
       volumes:
       - name: gitvol
         persistentVolumeClaim:
           claimName: git-pvc
+      - name: idevol
+        persistentVolumeClaim:
+          claimName: ide-pvc
+      - name: nodevistavol
+        persistentVolumeClaim:
+          claimName: nodevista-pvc
       restartPolicy: Never
   backoffLimit: 4
+
