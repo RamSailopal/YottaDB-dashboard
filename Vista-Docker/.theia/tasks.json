@@ -13,5 +13,12 @@
 			"type": "shell",
 			"command": "tail -f /home/project/log/rcomp.log"
 		},
+        {
+                        "label": "iknow",
+                        "type": "shell",
+                        "command": "sudo chmod 0600 /root/.ssh/id_rsa && sudo ssh -o \"StrictHostKeyChecking Off\" root@vistadocker_iknow_1"
+                },
+
+
 	]
 }
