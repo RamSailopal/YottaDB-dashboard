@@ -71,15 +71,15 @@ Click **terminal** and then **Run task**, **GTM** and then **Continue without sc
 
 An Intersystems iknow container has now been added to the stack to allow the natural language processing of text data from within VistA. Further details of iknow is available here - https://github.com/intersystems/iknow
 
-The python iknowpy module allows nlp while mg_python allows python interaction with a YottaDB/GTm database, in this case VistA (further details of mg_python - https://github.com/chrisemunt/mg_python)
+The python iknowpy module allows natural language processing (NLP) while mg_python allows python interaction with a YottaDB/GT.m database, in this case VistA (further details of mg_python - https://github.com/chrisemunt/mg_python)
 
 An example python script is available in the directory iknow, called nlp.py. This script takes the text stored in the node **^LAB("95.31", "6125", "10", "15", "0")** - **Fetal weight estimated from abdominal circumference, biparietal diameter, femur length and head circumference by the method of Roberts 1985**. It then hightlights and stores conceptual data. Each string is categorised into either **"Concept"** or **"NonRelevant or PathRelevant"**
 
 To run the python script:
 
-Open the workspace as instructed previously and create a new file called lnp.py. Copy and paste the text from 
+Open the workspace as instructed previously and create a new file called **nlp.py**. Copy, paste and save the text from https://raw.githubusercontent.com/RamSailopal/YottaDB-dashboard/main/Vista-Docker/iknow/nlp.py
 
-Click **terminal** and then **Run task**, **GTM** and then **Continue without scanning the task output**. This will run a terminal window and "drop" you into the iknow container prompt. Type and execute:
+Click **terminal** and then **Run task**, **iknow** and then **Continue without scanning the task output**. This will run a terminal window and "drop" you into the iknow container prompt. Type and execute:
 
     python3.8 /home/project/Vista/nlp.py
     
