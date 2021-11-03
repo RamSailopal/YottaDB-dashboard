@@ -54,6 +54,15 @@ services:
       - yottanet
    environment:
       - GF_INSTALL_PLUGINS=yesoreyeram-infinity-datasource
+ iknow:
+   image: docker.io/ramb0/iknow
+   entrypoint: [ "/bin/bash", "-c", "service ssh start && tail -f /dev/null" ]
+   volumes:
+      - app-volume:/home/project
+      - .ssh:/root/.ssh
+   networks:
+      - yottanet
+
 networks:
     yottanet:
 volumes:
