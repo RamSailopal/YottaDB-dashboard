@@ -40,6 +40,6 @@ def highlight(text, language="en", iknow=iknowpy.iKnowEngine()):
 
 
 
-mg_python.m_set_host(0, "vistadocker_yottadbdash_1", 7041, "", "")
+mg_python.m_set_host(0, "vistadash", 7041, "", "")
 result = mg_python.m_get(0, "^LAB", "95.31", "6125", "10", "15", "0")
 highlight(result)

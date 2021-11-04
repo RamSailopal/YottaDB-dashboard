@@ -3,6 +3,7 @@
         "*.m": "mumps"
     },
     "code-runner.executorMap": {
-        "mumps": "sudo chmod 0600 /root/.ssh/id_rsa && sudo ssh -o \"StrictHostKeyChecking Off\" root@vistadocker_yottadbdash_1 'ydb <<< \"D ^$fileNameWithoutExt\"'
+        "mumps": "sudo chmod 0600 /root/.ssh/id_rsa && sudo ssh -o \"StrictHostKeyChecking Off\" root@vistadash 'ydb <<< \"D ^$fileNameWithoutExt\"',
+        "python": "sudo chmod 0600 /root/.ssh/id_rsa && sudo ssh -o \"StrictHostKeyChecking Off\" root@iknow 'python3.8 $dir/$fileName'
     }
 }
