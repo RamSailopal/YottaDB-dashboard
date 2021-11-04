@@ -6,7 +6,7 @@
 version: "2"
 services:
  vistadash:
-   image: ramb0/vistadash
+   image: docker.io/ramb0/vistadash
    hostname: vistadash
    ports:
       - 9330:9430 
