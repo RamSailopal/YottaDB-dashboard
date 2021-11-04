@@ -67,6 +67,44 @@ Click **terminal** and then **Run task**, **GTM** and then **Continue without sc
 
 **NOTE - The .ssh directory holds  ssh keys for demo/presentation purposes. Use fresh, confidential keys in a production setup.**
 
+# iknow
+
+An Intersystems iknow container has now been added to the stack to allow the natural language processing of text data from within VistA. Further details of iknow is available here - https://github.com/intersystems/iknow
+
+The python iknowpy module allows natural language processing (NLP) while mg_python allows python interaction with a YottaDB/GT.m database, in this case VistA (further details of mg_python - https://github.com/chrisemunt/mg_python)
+
+An example python script is available in the directory iknow, called nlp.py. This script takes the text stored in the node **^LAB("95.31", "6125", "10", "15", "0")** - **Fetal weight estimated from abdominal circumference, biparietal diameter, femur length and head circumference by the method of Roberts 1985**. It then hightlights and stores conceptual data. Each string is categorised into either **"Concept"** or **"NonRelevant or PathRelevant"**
+
+To run the python script:
+
+Open the workspace as instructed previously and create a new file called **nlp.py**. Copy, paste and save the text from https://raw.githubusercontent.com/RamSailopal/YottaDB-dashboard/main/Vista-Docker/iknow/nlp.py
+
+Click **terminal** and then **Run task**, **iknow** and then **Continue without scanning the task output**. This will run a terminal window and "drop" you into the iknow container prompt. Type and execute:
+
+    python3.8 /home/project/Vista/nlp.py
+    
+Then to see the global entries, access the nodevista/GT.m environment as instructed above and then list the NLP global:
+
+    NODEVISTA>D ^%G
+
+
+    Output device: <terminal>: 
+
+
+    List ^NLP
+
+    ^NLP("Fetal weight estimated from abdominal circumference, biparietal diameter, femur length and head circumference by the method of Roberts 1985","Fetal weight")="Concept"
+    ^NLP("Fetal weight estimated from abdominal circumference, biparietal diameter, femur length and head circumference by the method of Roberts 1985","Roberts 1985")="Concept"
+    ^NLP("Fetal weight estimated from abdominal circumference, biparietal diameter, femur length and head circumference by the method of Roberts 1985","abdominal circumference,")="Concept"
+    ^NLP("Fetal weight estimated from abdominal circumference, biparietal diameter, femur length and head circumference by the method of Roberts 1985","biparietal diameter,")="Concept"
+    ^NLP("Fetal weight estimated from abdominal circumference, biparietal diameter, femur length and head circumference by the method of Roberts 1985","femur length")="Concept"
+    ^NLP("Fetal weight estimated from abdominal circumference, biparietal diameter, femur length and head circumference by the method of Roberts 1985","head circumference")="Concept"
+    ^NLP("Fetal weight estimated from abdominal circumference, biparietal diameter, femur length and head circumference by the method of Roberts 1985","method")="Concept"
+    ^NLP("Fetal weight estimated from abdominal circumference, biparietal diameter, femur length and head circumference by the method of Roberts 1985","the")="NonRelevant or PathRelevant"
+
+    List ^
+
+
 # Access to Code Changes
 
 Any code is held in the shared docker volume hosted on the Docker host machine called **vistadocker_app-volume**. This can be accessed by executing the following command:
