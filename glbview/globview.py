@@ -26,6 +26,11 @@ class S(BaseHTTPRequestHandler):
            else:
                  glbviewport="8001"
            glob = self.path.replace("/","")
+           x = glbviewadd.find("gitpod")
+           if (x == -1):
+              glbviewadd1=glbviewadd + ":" + glbviewport
+           else:
+              glbviewadd1=glbviewadd
            if (glob=="*" or glob==""):
               cmd = "ydb <<< 'D ^%GD;*' | awk '$0 !~ /^$/ && $0 !~ /^YDB>/ && $0 !~ /^Global/ && $0 !~ /Total/ { print }'"
               process = subprocess.Popen(cmd,
@@ -38,7 +43,7 @@ class S(BaseHTTPRequestHandler):
               result3=""
               for glb in result2:
                  if (glb!=""):
-                    result3 = result3 + "<a href=\"http://" + glbviewadd + ":" + glbviewport + "/" + glb + "\">^" + glb + "</a></br></br>"
+                    result3 = result3 + "<a href=\"http://" + glbviewadd1 + "/" + glb + "\">^" + glb + "</a></br></br>"
               oresult="<HTML><BODY><p><img src=\"https://yottadb.com/wp-content/uploads/2018/01/YottaDB_logo.svg\" width=\"300\" height=\"150\"></p><P><H1>Global Directory Listing</H1><DIV style=\"background-color:#ECF0F1;\">" + result3 + "</DIV></P></BODY></HTML>"
               return(oresult.encode())
            elif (glob[0:5]=="QUERY"):
